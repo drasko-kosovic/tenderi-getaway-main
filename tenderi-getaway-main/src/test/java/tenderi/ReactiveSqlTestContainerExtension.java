@@ -11,7 +11,7 @@ public class ReactiveSqlTestContainerExtension implements BeforeAllCallback {
 
     private static AtomicBoolean started = new AtomicBoolean(false);
 
-    private static PostgreSQLContainer<?> container = new PostgreSQLContainer<>("postgres:13.2")
+    private static PostgreSQLContainer<?> container = new PostgreSQLContainer<>("postgres:13.3")
         .withDatabaseName("tenderi")
         .withTmpFs(Collections.singletonMap("/testtmpfs", "rw"));
 

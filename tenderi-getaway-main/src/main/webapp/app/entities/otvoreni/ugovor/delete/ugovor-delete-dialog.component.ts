@@ -10,7 +10,7 @@ import { UgovorService } from '../service/ugovor.service';
 export class UgovorDeleteDialogComponent {
   ugovor?: IUgovor;
 
-  constructor(protected ugovorService: UgovorService, public activeModal: NgbActiveModal) {}
+  constructor(protected ugovorService: UgovorService, protected activeModal: NgbActiveModal) {}
 
   cancel(): void {
     this.activeModal.dismiss();

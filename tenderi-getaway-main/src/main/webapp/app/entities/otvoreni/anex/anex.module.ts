@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { SharedModule } from 'app/shared/shared.module';
 import { AnexComponent } from './list/anex.component';
 import { AnexDetailComponent } from './detail/anex-detail.component';

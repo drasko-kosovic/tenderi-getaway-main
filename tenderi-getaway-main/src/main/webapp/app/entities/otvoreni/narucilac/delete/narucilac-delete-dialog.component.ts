@@ -10,7 +10,7 @@ import { NarucilacService } from '../service/narucilac.service';
 export class NarucilacDeleteDialogComponent {
   narucilac?: INarucilac;
 
-  constructor(protected narucilacService: NarucilacService, public activeModal: NgbActiveModal) {}
+  constructor(protected narucilacService: NarucilacService, protected activeModal: NgbActiveModal) {}
 
   cancel(): void {
     this.activeModal.dismiss();

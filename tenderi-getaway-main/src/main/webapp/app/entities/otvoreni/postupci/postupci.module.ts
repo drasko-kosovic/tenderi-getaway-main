@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { SharedModule } from 'app/shared/shared.module';
 import { PostupciComponent } from './list/postupci.component';
 import { PostupciDetailComponent } from './detail/postupci-detail.component';

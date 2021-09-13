@@ -215,8 +215,9 @@ public class UserService {
                     user.setLangKey(userDTO.getLangKey());
                     Set<Authority> managedAuthorities = user.getAuthorities();
                     managedAuthorities.clear();
-                    return Flux
-                        .fromIterable(userDTO.getAuthorities())
+                    return userRepository
+                        .deleteUserAuthorities(user.getId())
+                        .thenMany(Flux.fromIterable(userDTO.getAuthorities()))
                         .flatMap(authorityRepository::findById)
                         .map(managedAuthorities::add)
                         .then(Mono.just(user));
@@ -317,7 +318,7 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public Flux<AdminUserDTO> getAllManagedUsers(Pageable pageable) {
-        return userRepository.findAllByIdNotNull(pageable).map(AdminUserDTO::new);
+        return userRepository.findAllWithAuthorities(pageable).map(AdminUserDTO::new);
     }
 
     @Transactional(readOnly = true)

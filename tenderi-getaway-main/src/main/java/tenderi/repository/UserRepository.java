@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.apache.commons.beanutils.BeanComparator;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.r2dbc.convert.R2dbcConverter;
 import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
 import org.springframework.data.r2dbc.repository.Query;
@@ -20,6 +22,7 @@ import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.util.function.Tuple2;
 import reactor.util.function.Tuples;
 import tenderi.domain.Authority;
 import tenderi.domain.User;
@@ -50,6 +53,9 @@ public interface UserRepository extends R2dbcRepository<User, Long>, UserReposit
 
     @Query("DELETE FROM jhi_user_authority")
     Mono<Void> deleteAllUserAuthorities();
+
+    @Query("DELETE FROM jhi_user_authority WHERE user_id = :userId")
+    Mono<Void> deleteUserAuthorities(Long userId);
 }
 
 interface DeleteExtended<T> {
@@ -60,6 +66,8 @@ interface UserRepositoryInternal extends DeleteExtended<User> {
     Mono<User> findOneWithAuthoritiesByLogin(String login);
 
     Mono<User> findOneWithAuthoritiesByEmailIgnoreCase(String email);
+
+    Flux<User> findAllWithAuthorities(Pageable pageable);
 }
 
 class UserRepositoryInternalImpl implements UserRepositoryInternal {
@@ -84,6 +92,40 @@ class UserRepositoryInternalImpl implements UserRepositoryInternal {
         return findOneWithAuthoritiesBy("email", email.toLowerCase());
     }
 
+    @Override
+    public Flux<User> findAllWithAuthorities(Pageable pageable) {
+        String property = pageable.getSort().stream().map(Sort.Order::getProperty).findFirst().get();
+        String direction = String.valueOf(pageable.getSort().stream().map(Sort.Order::getDirection).findFirst().get());
+        long page = pageable.getPageNumber();
+        long size = pageable.getPageSize();
+
+        return db
+            .sql("SELECT * FROM jhi_user u LEFT JOIN jhi_user_authority ua ON u.id=ua.user_id")
+            .map(
+                (row, metadata) ->
+                    Tuples.of(r2dbcConverter.read(User.class, row, metadata), Optional.ofNullable(row.get("authority_name", String.class)))
+            )
+            .all()
+            .groupBy(t -> t.getT1().getLogin())
+            .flatMap(l -> l.collectList().map(t -> updateUserWithAuthorities(t.get(0).getT1(), t)))
+            .sort(
+                Sort.Direction.fromString(direction) == Sort.DEFAULT_DIRECTION
+                    ? new BeanComparator<>(property)
+                    : new BeanComparator<>(property).reversed()
+            )
+            .skip(page * size)
+            .take(size);
+    }
+
+    @Override
+    public Mono<Void> delete(User user) {
+        return db
+            .sql("DELETE FROM jhi_user_authority WHERE user_id = :userId")
+            .bind("userId", user.getId())
+            .then()
+            .then(r2dbcEntityTemplate.delete(User.class).matching(query(where("id").is(user.getId()))).all().then());
+    }
+
     private Mono<User> findOneWithAuthoritiesBy(String fieldName, Object fieldValue) {
         return db
             .sql("SELECT * FROM jhi_user u LEFT JOIN jhi_user_authority ua ON u.id=ua.user_id WHERE u." + fieldName + " = :" + fieldName)
@@ -95,34 +137,25 @@ class UserRepositoryInternalImpl implements UserRepositoryInternal {
             .all()
             .collectList()
             .filter(l -> !l.isEmpty())
-            .map(
-                l -> {
-                    User user = l.get(0).getT1();
-                    user.setAuthorities(
-                        l
-                            .stream()
-                            .filter(t -> t.getT2().isPresent())
-                            .map(
-                                t -> {
-                                    Authority authority = new Authority();
-                                    authority.setName(t.getT2().get());
-                                    return authority;
-                                }
-                            )
-                            .collect(Collectors.toSet())
-                    );
-                    return user;
-                }
-            );
+            .map(l -> updateUserWithAuthorities(l.get(0).getT1(), l));
     }
 
-    @Override
-    public Mono<Void> delete(User user) {
-        return db
-            .sql("DELETE FROM jhi_user_authority WHERE user_id = :userId")
-            .bind("userId", user.getId())
-            .then()
-            .then(r2dbcEntityTemplate.delete(User.class).matching(query(where("id").is(user.getId()))).all().then());
+    private User updateUserWithAuthorities(User user, List<Tuple2<User, Optional<String>>> tuples) {
+        user.setAuthorities(
+            tuples
+                .stream()
+                .filter(t -> t.getT2().isPresent())
+                .map(
+                    t -> {
+                        Authority authority = new Authority();
+                        authority.setName(t.getT2().get());
+                        return authority;
+                    }
+                )
+                .collect(Collectors.toSet())
+        );
+
+        return user;
     }
 }
 

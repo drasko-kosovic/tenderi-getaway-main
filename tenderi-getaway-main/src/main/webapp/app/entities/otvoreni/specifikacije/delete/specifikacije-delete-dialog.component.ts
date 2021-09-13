@@ -10,7 +10,7 @@ import { SpecifikacijeService } from '../service/specifikacije.service';
 export class SpecifikacijeDeleteDialogComponent {
   specifikacije?: ISpecifikacije;
 
-  constructor(protected specifikacijeService: SpecifikacijeService, public activeModal: NgbActiveModal) {}
+  constructor(protected specifikacijeService: SpecifikacijeService, protected activeModal: NgbActiveModal) {}
 
   cancel(): void {
     this.activeModal.dismiss();

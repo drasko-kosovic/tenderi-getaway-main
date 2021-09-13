@@ -10,7 +10,7 @@ import { AnexService } from '../service/anex.service';
 export class AnexDeleteDialogComponent {
   anex?: IAnex;
 
-  constructor(protected anexService: AnexService, public activeModal: NgbActiveModal) {}
+  constructor(protected anexService: AnexService, protected activeModal: NgbActiveModal) {}
 
   cancel(): void {
     this.activeModal.dismiss();

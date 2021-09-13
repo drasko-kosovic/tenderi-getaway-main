@@ -81,7 +81,7 @@ describe('Service Tests', () => {
       it('should partial update a Ponudjaci', () => {
         const patchObject = Object.assign(
           {
-            adresaPonudjaca: 'BBBBBB',
+            odgovornoLice: 'BBBBBB',
             bankaRacun: 'BBBBBB',
           },
           new Ponudjaci()
@@ -157,7 +157,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique Ponudjaci to an array', () => {
-          const ponudjaciArray: IPonudjaci[] = [{ id: 123 }, { id: 456 }, { id: 98357 }];
+          const ponudjaciArray: IPonudjaci[] = [{ id: 123 }, { id: 456 }, { id: 49690 }];
           const ponudjaciCollection: IPonudjaci[] = [{ id: 123 }];
           expectedResult = service.addPonudjaciToCollectionIfMissing(ponudjaciCollection, ...ponudjaciArray);
           expect(expectedResult).toHaveLength(3);
@@ -177,6 +177,12 @@ describe('Service Tests', () => {
           expectedResult = service.addPonudjaciToCollectionIfMissing([], null, ponudjaci, undefined);
           expect(expectedResult).toHaveLength(1);
           expect(expectedResult).toContain(ponudjaci);
+        });
+
+        it('should return initial array if no Ponudjaci is added', () => {
+          const ponudjaciCollection: IPonudjaci[] = [{ id: 123 }];
+          expectedResult = service.addPonudjaciToCollectionIfMissing(ponudjaciCollection, undefined, null);
+          expect(expectedResult).toEqual(ponudjaciCollection);
         });
       });
     });

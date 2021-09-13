@@ -15,9 +15,9 @@ export type EntityArrayResponseType = HttpResponse<IPostupci[]>;
 
 @Injectable({ providedIn: 'root' })
 export class PostupciService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/postupcis', 'otvoreni');
+  protected resourceUrl = this.applicationConfigService.getEndpointFor('api/postupcis', 'otvoreni');
 
-  constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
+  constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
   create(postupci: IPostupci): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(postupci);

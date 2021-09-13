@@ -13,7 +13,6 @@ describe('/account/register', () => {
     cy.window().then(win => {
       win.sessionStorage.clear();
     });
-
     cy.clearCookies();
     cy.visit('');
     cy.clickOnRegisterItem();
@@ -28,30 +27,37 @@ describe('/account/register', () => {
   });
 
   it('requires username', () => {
-    cy.get(usernameRegisterSelector).should('have.class', classInvalid).type('test').should('have.class', classValid).clear();
+    cy.get(usernameRegisterSelector).should('have.class', classInvalid).type('test');
+    cy.get(usernameRegisterSelector).should('have.class', classValid).clear();
   });
 
   it('requires email', () => {
-    cy.get(emailRegisterSelector).should('have.class', classInvalid).type('testtest.fr').should('have.class', classInvalid).clear();
+    cy.get(emailRegisterSelector).should('have.class', classInvalid).type('testtest.fr');
+    cy.get(emailRegisterSelector).should('have.class', classInvalid).clear();
   });
 
   it('requires email in correct format', () => {
-    cy.get(emailRegisterSelector).should('have.class', classInvalid).type('test@test.fr').should('have.class', classValid).clear();
+    cy.get(emailRegisterSelector).should('have.class', classInvalid).type('test@test.fr');
+    cy.get(emailRegisterSelector).should('have.class', classValid).clear();
   });
 
   it('requires first password', () => {
-    cy.get(firstPasswordRegisterSelector).should('have.class', classInvalid).type('test@test.fr').should('have.class', classValid).clear();
+    cy.get(firstPasswordRegisterSelector).should('have.class', classInvalid).type('test@test.fr');
+    cy.get(firstPasswordRegisterSelector).should('have.class', classValid).clear();
   });
 
   it('requires password and confirm password to be same', () => {
-    cy.get(firstPasswordRegisterSelector).should('have.class', classInvalid).type('test').should('have.class', classValid);
-    cy.get(secondPasswordRegisterSelector).should('have.class', classInvalid).type('test').should('have.class', classValid);
+    cy.get(firstPasswordRegisterSelector).should('have.class', classInvalid).type('test');
+    cy.get(firstPasswordRegisterSelector).should('have.class', classValid);
+    cy.get(secondPasswordRegisterSelector).should('have.class', classInvalid).type('test');
+    cy.get(secondPasswordRegisterSelector).should('have.class', classValid);
     cy.get(firstPasswordRegisterSelector).clear();
     cy.get(secondPasswordRegisterSelector).clear();
   });
 
   it('requires password and confirm password have not the same value', () => {
-    cy.get(firstPasswordRegisterSelector).should('have.class', classInvalid).type('test').should('have.class', classValid);
+    cy.get(firstPasswordRegisterSelector).should('have.class', classInvalid).type('test');
+    cy.get(firstPasswordRegisterSelector).should('have.class', classValid);
     cy.get(secondPasswordRegisterSelector).should('have.class', classInvalid).type('otherPassword');
     cy.get(submitRegisterSelector).should('be.disabled');
     cy.get(firstPasswordRegisterSelector).clear();

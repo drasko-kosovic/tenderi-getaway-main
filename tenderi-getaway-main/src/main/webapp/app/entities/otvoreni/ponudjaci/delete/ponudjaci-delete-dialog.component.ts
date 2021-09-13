@@ -10,7 +10,7 @@ import { PonudjaciService } from '../service/ponudjaci.service';
 export class PonudjaciDeleteDialogComponent {
   ponudjaci?: IPonudjaci;
 
-  constructor(protected ponudjaciService: PonudjaciService, public activeModal: NgbActiveModal) {}
+  constructor(protected ponudjaciService: PonudjaciService, protected activeModal: NgbActiveModal) {}
 
   cancel(): void {
     this.activeModal.dismiss();

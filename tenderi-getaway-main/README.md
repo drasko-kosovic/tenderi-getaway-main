@@ -1,6 +1,6 @@
 # tenderi
 
-This application was generated using JHipster 7.0.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.0.0](https://www.jhipster.tech/documentation-archive/v7.0.0).
+This application was generated using JHipster 7.1.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.1.0](https://www.jhipster.tech/documentation-archive/v7.1.0).
 
 This is a "gateway" application intended to be part of a microservice architecture, please refer to the [Doing microservices with JHipster][] page of the documentation for more information.
 This application is configured for Service Discovery and Configuration with the JHipster-Registry. On launch, it will refuse to start if it is not able to connect to the JHipster-Registry at [http://localhost:8761](http://localhost:8761). For more information, read our documentation on [Service Discovery and Configuration with the JHipster-Registry][].
@@ -27,12 +27,6 @@ auto-refreshes when files change on your hard drive.
 ```
 ./mvnw
 npm start
-```
-
-If you want to use [HMR](https://webpack.js.org/guides/hot-module-replacement) for instant page updates and data + scroll position preservation on file changes then instead of `npm start` run
-
-```
-npm run start-hmr
 ```
 
 Npm is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
@@ -145,6 +139,15 @@ Unit tests are run by [Jest][]. They're located in [src/test/javascript/](src/te
 npm test
 ```
 
+UI end-to-end tests are powered by [Cypress][]. They're located in [src/test/javascript/cypress](src/test/javascript/cypress)
+and can be run by starting Spring Boot in one terminal (`./mvnw spring-boot:run`) and running the tests (`npm run e2e`) in a second one.
+
+#### Lighthouse audits
+
+You can execute automated [lighthouse audits][https://developers.google.com/web/tools/lighthouse/] with [cypress audits][https://github.com/mfrachet/cypress-audit] by running `npm run e2e:cypress:audits`.
+You should only run the audits when your application is packaged with the production profile.
+The lighthouse report is created in `target/cypress/lhreport.html`
+
 For more information, refer to the [Running tests page][].
 
 ### Code quality
@@ -209,21 +212,21 @@ For more information refer to [Using Docker and Docker-Compose][], this page als
 To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`), this will let you generate configuration files for a number of Continuous Integration systems. Consult the [Setting up Continuous Integration][] page for more information.
 
 [jhipster homepage and latest documentation]: https://www.jhipster.tech
-[jhipster 7.0.0 archive]: https://www.jhipster.tech/documentation-archive/v7.0.0
-[doing microservices with jhipster]: https://www.jhipster.tech/documentation-archive/v7.0.0/microservices-architecture/
-[using jhipster in development]: https://www.jhipster.tech/documentation-archive/v7.0.0/development/
-[service discovery and configuration with the jhipster-registry]: https://www.jhipster.tech/documentation-archive/v7.0.0/microservices-architecture/#jhipster-registry
-[using docker and docker-compose]: https://www.jhipster.tech/documentation-archive/v7.0.0/docker-compose
-[using jhipster in production]: https://www.jhipster.tech/documentation-archive/v7.0.0/production/
-[running tests page]: https://www.jhipster.tech/documentation-archive/v7.0.0/running-tests/
-[code quality page]: https://www.jhipster.tech/documentation-archive/v7.0.0/code-quality/
-[setting up continuous integration]: https://www.jhipster.tech/documentation-archive/v7.0.0/setting-up-ci/
+[jhipster 7.1.0 archive]: https://www.jhipster.tech/documentation-archive/v7.1.0
+[doing microservices with jhipster]: https://www.jhipster.tech/documentation-archive/v7.1.0/microservices-architecture/
+[using jhipster in development]: https://www.jhipster.tech/documentation-archive/v7.1.0/development/
+[service discovery and configuration with the jhipster-registry]: https://www.jhipster.tech/documentation-archive/v7.1.0/microservices-architecture/#jhipster-registry
+[using docker and docker-compose]: https://www.jhipster.tech/documentation-archive/v7.1.0/docker-compose
+[using jhipster in production]: https://www.jhipster.tech/documentation-archive/v7.1.0/production/
+[running tests page]: https://www.jhipster.tech/documentation-archive/v7.1.0/running-tests/
+[code quality page]: https://www.jhipster.tech/documentation-archive/v7.1.0/code-quality/
+[setting up continuous integration]: https://www.jhipster.tech/documentation-archive/v7.1.0/setting-up-ci/
 [node.js]: https://nodejs.org/
 [webpack]: https://webpack.github.io/
 [angular cli]: https://cli.angular.io/
 [browsersync]: https://www.browsersync.io/
 [jest]: https://facebook.github.io/jest/
 [jasmine]: https://jasmine.github.io/2.0/introduction.html
-[protractor]: https://angular.github.io/protractor/
+[cypress]: https://www.cypress.io/
 [leaflet]: https://leafletjs.com/
 [definitelytyped]: https://definitelytyped.org/
