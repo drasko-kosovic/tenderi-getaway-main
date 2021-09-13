@@ -109,8 +109,10 @@ describe('Service Tests', () => {
       it('should partial update a Postupci', () => {
         const patchObject = Object.assign(
           {
-            brojTendera: 'BBBBBB',
+            sifraPostupka: 1,
             opisPostupka: 'BBBBBB',
+            vrstaPostupka: 'BBBBBB',
+            datumOtvaranja: currentDate.format(DATE_FORMAT),
           },
           new Postupci()
         );
@@ -199,7 +201,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique Postupci to an array', () => {
-          const postupciArray: IPostupci[] = [{ id: 123 }, { id: 456 }, { id: 84214 }];
+          const postupciArray: IPostupci[] = [{ id: 123 }, { id: 456 }, { id: 10254 }];
           const postupciCollection: IPostupci[] = [{ id: 123 }];
           expectedResult = service.addPostupciToCollectionIfMissing(postupciCollection, ...postupciArray);
           expect(expectedResult).toHaveLength(3);
@@ -219,6 +221,12 @@ describe('Service Tests', () => {
           expectedResult = service.addPostupciToCollectionIfMissing([], null, postupci, undefined);
           expect(expectedResult).toHaveLength(1);
           expect(expectedResult).toContain(postupci);
+        });
+
+        it('should return initial array if no Postupci is added', () => {
+          const postupciCollection: IPostupci[] = [{ id: 123 }];
+          expectedResult = service.addPostupciToCollectionIfMissing(postupciCollection, undefined, null);
+          expect(expectedResult).toEqual(postupciCollection);
         });
       });
     });

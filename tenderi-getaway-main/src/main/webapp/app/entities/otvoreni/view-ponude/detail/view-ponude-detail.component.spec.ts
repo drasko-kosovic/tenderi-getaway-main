@@ -31,7 +31,7 @@ describe('Component Tests', () => {
         comp.ngOnInit();
 
         // THEN
-        expect(comp.viewPonude).toEqual(jasmine.objectContaining({ id: 123 }));
+        expect(comp.viewPonude).toEqual(expect.objectContaining({ id: 123 }));
       });
     });
   });

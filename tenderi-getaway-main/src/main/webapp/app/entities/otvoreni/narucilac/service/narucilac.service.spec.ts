@@ -89,12 +89,9 @@ describe('Service Tests', () => {
       it('should partial update a Narucilac', () => {
         const patchObject = Object.assign(
           {
-            racun: 'BBBBBB',
             pib: 'BBBBBB',
-            pdv: 'BBBBBB',
             odgovornoLiceNarucioca: 'BBBBBB',
             email: 'BBBBBB',
-            adresa: 'BBBBBB',
           },
           new Narucilac()
         );
@@ -173,7 +170,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique Narucilac to an array', () => {
-          const narucilacArray: INarucilac[] = [{ id: 123 }, { id: 456 }, { id: 9529 }];
+          const narucilacArray: INarucilac[] = [{ id: 123 }, { id: 456 }, { id: 46414 }];
           const narucilacCollection: INarucilac[] = [{ id: 123 }];
           expectedResult = service.addNarucilacToCollectionIfMissing(narucilacCollection, ...narucilacArray);
           expect(expectedResult).toHaveLength(3);
@@ -193,6 +190,12 @@ describe('Service Tests', () => {
           expectedResult = service.addNarucilacToCollectionIfMissing([], null, narucilac, undefined);
           expect(expectedResult).toHaveLength(1);
           expect(expectedResult).toContain(narucilac);
+        });
+
+        it('should return initial array if no Narucilac is added', () => {
+          const narucilacCollection: INarucilac[] = [{ id: 123 }];
+          expectedResult = service.addNarucilacToCollectionIfMissing(narucilacCollection, undefined, null);
+          expect(expectedResult).toEqual(narucilacCollection);
         });
       });
     });

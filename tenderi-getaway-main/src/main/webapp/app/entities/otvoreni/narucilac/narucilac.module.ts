@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { SharedModule } from 'app/shared/shared.module';
 import { NarucilacComponent } from './list/narucilac.component';
 import { NarucilacDetailComponent } from './detail/narucilac-detail.component';

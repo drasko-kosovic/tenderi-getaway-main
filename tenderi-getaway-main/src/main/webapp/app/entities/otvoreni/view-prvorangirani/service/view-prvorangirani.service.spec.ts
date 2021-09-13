@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { IViewPrvorangirani, ViewPrvorangirani } from '../view-prvorangirani.model';
+import { IViewPrvorangirani } from '../view-prvorangirani.model';
 
 import { ViewPrvorangiraniService } from './view-prvorangirani.service';
 
@@ -119,7 +119,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique ViewPrvorangirani to an array', () => {
-          const viewPrvorangiraniArray: IViewPrvorangirani[] = [{ id: 123 }, { id: 456 }, { id: 55155 }];
+          const viewPrvorangiraniArray: IViewPrvorangirani[] = [{ id: 123 }, { id: 456 }, { id: 91644 }];
           const viewPrvorangiraniCollection: IViewPrvorangirani[] = [{ id: 123 }];
           expectedResult = service.addViewPrvorangiraniToCollectionIfMissing(viewPrvorangiraniCollection, ...viewPrvorangiraniArray);
           expect(expectedResult).toHaveLength(3);
@@ -139,6 +139,12 @@ describe('Service Tests', () => {
           expectedResult = service.addViewPrvorangiraniToCollectionIfMissing([], null, viewPrvorangirani, undefined);
           expect(expectedResult).toHaveLength(1);
           expect(expectedResult).toContain(viewPrvorangirani);
+        });
+
+        it('should return initial array if no ViewPrvorangirani is added', () => {
+          const viewPrvorangiraniCollection: IViewPrvorangirani[] = [{ id: 123 }];
+          expectedResult = service.addViewPrvorangiraniToCollectionIfMissing(viewPrvorangiraniCollection, undefined, null);
+          expect(expectedResult).toEqual(viewPrvorangiraniCollection);
         });
       });
     });

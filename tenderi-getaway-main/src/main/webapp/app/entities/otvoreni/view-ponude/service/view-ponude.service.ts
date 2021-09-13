@@ -15,9 +15,9 @@ export type EntityArrayResponseType = HttpResponse<IViewPonude[]>;
 
 @Injectable({ providedIn: 'root' })
 export class ViewPonudeService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/view-ponudes', 'otvoreni');
+  protected resourceUrl = this.applicationConfigService.getEndpointFor('api/view-ponudes', 'otvoreni');
 
-  constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
+  constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
   find(id: number): Observable<EntityResponseType> {
     return this.http

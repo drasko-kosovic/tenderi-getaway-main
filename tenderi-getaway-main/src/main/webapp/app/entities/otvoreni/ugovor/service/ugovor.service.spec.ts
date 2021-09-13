@@ -111,11 +111,10 @@ describe('Service Tests', () => {
       it('should partial update a Ugovor', () => {
         const patchObject = Object.assign(
           {
-            datumUgovora: currentDate.format(DATE_FORMAT),
+            brojUgovora: 'BBBBBB',
             brojOdluke: 'BBBBBB',
-            datumOdluke: currentDate.format(DATE_FORMAT),
-            iznosUgovoraBezPdf: 1,
             sifraPostupka: 1,
+            sifraPonude: 1,
           },
           new Ugovor()
         );
@@ -205,7 +204,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique Ugovor to an array', () => {
-          const ugovorArray: IUgovor[] = [{ id: 123 }, { id: 456 }, { id: 29139 }];
+          const ugovorArray: IUgovor[] = [{ id: 123 }, { id: 456 }, { id: 79076 }];
           const ugovorCollection: IUgovor[] = [{ id: 123 }];
           expectedResult = service.addUgovorToCollectionIfMissing(ugovorCollection, ...ugovorArray);
           expect(expectedResult).toHaveLength(3);
@@ -225,6 +224,12 @@ describe('Service Tests', () => {
           expectedResult = service.addUgovorToCollectionIfMissing([], null, ugovor, undefined);
           expect(expectedResult).toHaveLength(1);
           expect(expectedResult).toContain(ugovor);
+        });
+
+        it('should return initial array if no Ugovor is added', () => {
+          const ugovorCollection: IUgovor[] = [{ id: 123 }];
+          expectedResult = service.addUgovorToCollectionIfMissing(ugovorCollection, undefined, null);
+          expect(expectedResult).toEqual(ugovorCollection);
         });
       });
     });

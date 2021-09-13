@@ -10,7 +10,7 @@ import { PostupciService } from '../service/postupci.service';
 export class PostupciDeleteDialogComponent {
   postupci?: IPostupci;
 
-  constructor(protected postupciService: PostupciService, public activeModal: NgbActiveModal) {}
+  constructor(protected postupciService: PostupciService, protected activeModal: NgbActiveModal) {}
 
   cancel(): void {
     this.activeModal.dismiss();

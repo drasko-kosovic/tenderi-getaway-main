@@ -93,10 +93,12 @@ describe('Service Tests', () => {
       it('should partial update a Specifikacije', () => {
         const patchObject = Object.assign(
           {
+            brojPartije: 1,
+            atc: 'BBBBBB',
+            inn: 'BBBBBB',
+            farmaceutskiOblikLijeka: 'BBBBBB',
             jacinaLijeka: 'BBBBBB',
             jedinicaMjere: 'BBBBBB',
-            procijenjenaVrijednost: 1,
-            pakovanje: 'BBBBBB',
             trazenaKolicina: 1,
           },
           new Specifikacije()
@@ -178,7 +180,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique Specifikacije to an array', () => {
-          const specifikacijeArray: ISpecifikacije[] = [{ id: 123 }, { id: 456 }, { id: 67298 }];
+          const specifikacijeArray: ISpecifikacije[] = [{ id: 123 }, { id: 456 }, { id: 47391 }];
           const specifikacijeCollection: ISpecifikacije[] = [{ id: 123 }];
           expectedResult = service.addSpecifikacijeToCollectionIfMissing(specifikacijeCollection, ...specifikacijeArray);
           expect(expectedResult).toHaveLength(3);
@@ -198,6 +200,12 @@ describe('Service Tests', () => {
           expectedResult = service.addSpecifikacijeToCollectionIfMissing([], null, specifikacije, undefined);
           expect(expectedResult).toHaveLength(1);
           expect(expectedResult).toContain(specifikacije);
+        });
+
+        it('should return initial array if no Specifikacije is added', () => {
+          const specifikacijeCollection: ISpecifikacije[] = [{ id: 123 }];
+          expectedResult = service.addSpecifikacijeToCollectionIfMissing(specifikacijeCollection, undefined, null);
+          expect(expectedResult).toEqual(specifikacijeCollection);
         });
       });
     });

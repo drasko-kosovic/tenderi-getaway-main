@@ -10,7 +10,7 @@ import { HvalePonudeService } from '../service/hvale-ponude.service';
 export class HvalePonudeDeleteDialogComponent {
   hvalePonude?: IHvalePonude;
 
-  constructor(protected hvalePonudeService: HvalePonudeService, public activeModal: NgbActiveModal) {}
+  constructor(protected hvalePonudeService: HvalePonudeService, protected activeModal: NgbActiveModal) {}
 
   cancel(): void {
     this.activeModal.dismiss();

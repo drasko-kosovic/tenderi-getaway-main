@@ -15,9 +15,9 @@ export type EntityArrayResponseType = HttpResponse<IPonude[]>;
 
 @Injectable({ providedIn: 'root' })
 export class PonudeService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/ponudes', 'otvoreni');
+  protected resourceUrl = this.applicationConfigService.getEndpointFor('api/ponudes', 'otvoreni');
 
-  constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
+  constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
   create(ponude: IPonude): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(ponude);

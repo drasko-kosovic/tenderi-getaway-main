@@ -10,7 +10,7 @@ import { PonudeService } from '../service/ponude.service';
 export class PonudeDeleteDialogComponent {
   ponude?: IPonude;
 
-  constructor(protected ponudeService: PonudeService, public activeModal: NgbActiveModal) {}
+  constructor(protected ponudeService: PonudeService, protected activeModal: NgbActiveModal) {}
 
   cancel(): void {
     this.activeModal.dismiss();

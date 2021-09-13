@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { SharedModule } from 'app/shared/shared.module';
 import { ViewPrvorangiraniComponent } from './list/view-prvorangirani.component';
 import { ViewPrvorangiraniDetailComponent } from './detail/view-prvorangirani-detail.component';

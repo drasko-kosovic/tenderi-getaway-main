@@ -99,15 +99,12 @@ describe('Service Tests', () => {
       it('should partial update a Anex', () => {
         const patchObject = Object.assign(
           {
-            sifra_postupka: 1,
-            inn: 'BBBBBB',
+            sifra_ponude: 1,
             zasticeni_naziv: 'BBBBBB',
-            farmaceutski_oblik_lijeka: 'BBBBBB',
             jacina_lijeka: 'BBBBBB',
-            pakovanje: 'BBBBBB',
+            trazena_kolicina: 1,
             procijenjena_vrijednost: 1,
             rok_isporuke: 1,
-            naziv_ponudjaca: 'BBBBBB',
           },
           new Anex()
         );
@@ -191,7 +188,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique Anex to an array', () => {
-          const anexArray: IAnex[] = [{ id: 123 }, { id: 456 }, { id: 17118 }];
+          const anexArray: IAnex[] = [{ id: 123 }, { id: 456 }, { id: 22345 }];
           const anexCollection: IAnex[] = [{ id: 123 }];
           expectedResult = service.addAnexToCollectionIfMissing(anexCollection, ...anexArray);
           expect(expectedResult).toHaveLength(3);
@@ -211,6 +208,12 @@ describe('Service Tests', () => {
           expectedResult = service.addAnexToCollectionIfMissing([], null, anex, undefined);
           expect(expectedResult).toHaveLength(1);
           expect(expectedResult).toContain(anex);
+        });
+
+        it('should return initial array if no Anex is added', () => {
+          const anexCollection: IAnex[] = [{ id: 123 }];
+          expectedResult = service.addAnexToCollectionIfMissing(anexCollection, undefined, null);
+          expect(expectedResult).toEqual(anexCollection);
         });
       });
     });

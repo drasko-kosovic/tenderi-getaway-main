@@ -6,7 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ISpecifikacije } from '../specifikacije.model';
 
-import { ITEMS_PER_PAGE } from 'app/config/pagination.constants';
+import { ASC, DESC, ITEMS_PER_PAGE, SORT } from 'app/config/pagination.constants';
 import { SpecifikacijeService } from '../service/specifikacije.service';
 import { SpecifikacijeDeleteDialogComponent } from '../delete/specifikacije-delete-dialog.component';
 
@@ -73,7 +73,7 @@ export class SpecifikacijeComponent implements OnInit {
   }
 
   protected sort(): string[] {
-    const result = [this.predicate + ',' + (this.ascending ? 'asc' : 'desc')];
+    const result = [this.predicate + ',' + (this.ascending ? ASC : DESC)];
     if (this.predicate !== 'id') {
       result.push('id');
     }
@@ -84,9 +84,9 @@ export class SpecifikacijeComponent implements OnInit {
     combineLatest([this.activatedRoute.data, this.activatedRoute.queryParamMap]).subscribe(([data, params]) => {
       const page = params.get('page');
       const pageNumber = page !== null ? +page : 1;
-      const sort = (params.get('sort') ?? data['defaultSort']).split(',');
+      const sort = (params.get(SORT) ?? data['defaultSort']).split(',');
       const predicate = sort[0];
-      const ascending = sort[1] === 'asc';
+      const ascending = sort[1] === ASC;
       if (pageNumber !== this.page || predicate !== this.predicate || ascending !== this.ascending) {
         this.predicate = predicate;
         this.ascending = ascending;
@@ -103,7 +103,7 @@ export class SpecifikacijeComponent implements OnInit {
         queryParams: {
           page: this.page,
           size: this.itemsPerPage,
-          sort: this.predicate + ',' + (this.ascending ? 'asc' : 'desc'),
+          sort: this.predicate + ',' + (this.ascending ? ASC : DESC),
         },
       });
     }

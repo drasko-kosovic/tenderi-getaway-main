@@ -12,9 +12,9 @@ export type EntityArrayResponseType = HttpResponse<IAnex[]>;
 
 @Injectable({ providedIn: 'root' })
 export class AnexService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/anexes', 'otvoreni');
+  protected resourceUrl = this.applicationConfigService.getEndpointFor('api/anexes', 'otvoreni');
 
-  constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
+  constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
   create(anex: IAnex): Observable<EntityResponseType> {
     return this.http.post<IAnex>(this.resourceUrl, anex, { observe: 'response' });

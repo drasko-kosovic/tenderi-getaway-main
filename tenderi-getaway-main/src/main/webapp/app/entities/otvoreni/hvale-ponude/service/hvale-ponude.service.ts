@@ -12,9 +12,9 @@ export type EntityArrayResponseType = HttpResponse<IHvalePonude[]>;
 
 @Injectable({ providedIn: 'root' })
 export class HvalePonudeService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/hvale-ponudes', 'otvoreni');
+  protected resourceUrl = this.applicationConfigService.getEndpointFor('api/hvale-ponudes', 'otvoreni');
 
-  constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
+  constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
   create(hvalePonude: IHvalePonude): Observable<EntityResponseType> {
     return this.http.post<IHvalePonude>(this.resourceUrl, hvalePonude, { observe: 'response' });

@@ -1,46 +1,54 @@
+import { entityItemSelector } from '../../support/commands';
 import { entityTableSelector, entityDetailsButtonSelector, entityDetailsBackButtonSelector } from '../../support/entity';
 
 describe('ViewPrvorangirani e2e test', () => {
-  let startingEntitiesCount = 0;
+  const viewPrvorangiraniPageUrl = '/view-prvorangirani';
+  const viewPrvorangiraniPageUrlPattern = new RegExp('/view-prvorangirani(\\?.*)?$');
+  const username = Cypress.env('E2E_USERNAME') ?? 'admin';
+  const password = Cypress.env('E2E_PASSWORD') ?? 'admin';
 
   before(() => {
     cy.window().then(win => {
       win.sessionStorage.clear();
     });
-
-    cy.clearCookies();
-    cy.intercept('GET', '/services/otvoreni/api/view-prvorangiranis*').as('entitiesRequest');
     cy.visit('');
-    cy.login('admin', 'admin');
-    cy.clickOnEntityMenuItem('view-prvorangirani');
-    cy.wait('@entitiesRequest').then(({ request, response }) => (startingEntitiesCount = response.body.length));
-    cy.visit('/');
+    cy.login(username, password);
+    cy.get(entityItemSelector).should('exist');
+  });
+
+  beforeEach(() => {
+    cy.intercept('GET', '/services/otvoreni/api/view-prvorangiranis+(?*|)').as('entitiesRequest');
+    cy.intercept('POST', '/services/otvoreni/api/view-prvorangiranis').as('postEntityRequest');
+    cy.intercept('DELETE', '/services/otvoreni/api/view-prvorangiranis/*').as('deleteEntityRequest');
   });
 
   it('should load ViewPrvorangiranis', () => {
-    cy.intercept('GET', '/services/otvoreni/api/view-prvorangiranis*').as('entitiesRequest');
     cy.visit('/');
     cy.clickOnEntityMenuItem('view-prvorangirani');
-    cy.wait('@entitiesRequest');
+    cy.wait('@entitiesRequest').then(({ response }) => {
+      if (response.body.length === 0) {
+        cy.get(entityTableSelector).should('not.exist');
+      } else {
+        cy.get(entityTableSelector).should('exist');
+      }
+    });
     cy.getEntityHeading('ViewPrvorangirani').should('exist');
-    if (startingEntitiesCount === 0) {
-      cy.get(entityTableSelector).should('not.exist');
-    } else {
-      cy.get(entityTableSelector).should('have.lengthOf', startingEntitiesCount);
-    }
-    cy.visit('/');
+    cy.url().should('match', viewPrvorangiraniPageUrlPattern);
   });
 
-  it('should load details ViewPrvorangirani page', () => {
-    cy.intercept('GET', '/services/otvoreni/api/view-prvorangiranis*').as('entitiesRequest');
-    cy.visit('/');
-    cy.clickOnEntityMenuItem('view-prvorangirani');
-    cy.wait('@entitiesRequest');
-    if (startingEntitiesCount > 0) {
-      cy.get(entityDetailsButtonSelector).first().click({ force: true });
-      cy.getEntityDetailsHeading('viewPrvorangirani');
-      cy.get(entityDetailsBackButtonSelector).should('exist');
-    }
-    cy.visit('/');
+  it('should load details ViewPrvorangirani page', function () {
+    cy.visit(viewPrvorangiraniPageUrl);
+    cy.wait('@entitiesRequest').then(({ response }) => {
+      if (response.body.length === 0) {
+        this.skip();
+      }
+    });
+    cy.get(entityDetailsButtonSelector).first().click({ force: true });
+    cy.getEntityDetailsHeading('viewPrvorangirani');
+    cy.get(entityDetailsBackButtonSelector).click({ force: true });
+    cy.wait('@entitiesRequest').then(({ response }) => {
+      expect(response.statusCode).to.equal(200);
+    });
+    cy.url().should('match', viewPrvorangiraniPageUrlPattern);
   });
 });

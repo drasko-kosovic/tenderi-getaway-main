@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { SharedModule } from 'app/shared/shared.module';
 import { UgovorComponent } from './list/ugovor.component';
 import { UgovorDetailComponent } from './detail/ugovor-detail.component';

@@ -3,7 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import * as dayjs from 'dayjs';
 
 import { DATE_FORMAT } from 'app/config/input.constants';
-import { IViewPonude, ViewPonude } from '../view-ponude.model';
+import { IViewPonude } from '../view-ponude.model';
 
 import { ViewPonudeService } from './view-ponude.service';
 
@@ -119,7 +119,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique ViewPonude to an array', () => {
-          const viewPonudeArray: IViewPonude[] = [{ id: 123 }, { id: 456 }, { id: 95773 }];
+          const viewPonudeArray: IViewPonude[] = [{ id: 123 }, { id: 456 }, { id: 98471 }];
           const viewPonudeCollection: IViewPonude[] = [{ id: 123 }];
           expectedResult = service.addViewPonudeToCollectionIfMissing(viewPonudeCollection, ...viewPonudeArray);
           expect(expectedResult).toHaveLength(3);
@@ -139,6 +139,12 @@ describe('Service Tests', () => {
           expectedResult = service.addViewPonudeToCollectionIfMissing([], null, viewPonude, undefined);
           expect(expectedResult).toHaveLength(1);
           expect(expectedResult).toContain(viewPonude);
+        });
+
+        it('should return initial array if no ViewPonude is added', () => {
+          const viewPonudeCollection: IViewPonude[] = [{ id: 123 }];
+          expectedResult = service.addViewPonudeToCollectionIfMissing(viewPonudeCollection, undefined, null);
+          expect(expectedResult).toEqual(viewPonudeCollection);
         });
       });
     });

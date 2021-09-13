@@ -7,11 +7,13 @@ import {
 } from '../../support/commands';
 
 describe('login modal', () => {
+  const username = Cypress.env('E2E_USERNAME') ?? 'admin';
+  const password = Cypress.env('E2E_PASSWORD') ?? 'admin';
+
   before(() => {
     cy.window().then(win => {
       win.sessionStorage.clear();
     });
-
     cy.clearCookies();
     cy.visit('');
     cy.clickOnLoginItem();
@@ -43,7 +45,7 @@ describe('login modal', () => {
   });
 
   it('errors when password is incorrect', () => {
-    cy.get(usernameLoginSelector).type('admin');
+    cy.get(usernameLoginSelector).type(username);
     cy.get(passwordLoginSelector).type('bad-password');
     cy.get(submitLoginSelector).click();
     cy.wait('@authenticate').then(({ request, response }) => expect(response.statusCode).to.equal(401));
@@ -53,8 +55,8 @@ describe('login modal', () => {
   });
 
   it('go to login page when successfully logs in', () => {
-    cy.get(usernameLoginSelector).type('admin');
-    cy.get(passwordLoginSelector).type('admin');
+    cy.get(usernameLoginSelector).type(username);
+    cy.get(passwordLoginSelector).type(password);
     cy.get(submitLoginSelector).click();
     cy.wait('@authenticate').then(({ request, response }) => expect(response.statusCode).to.equal(200));
     cy.hash().should('eq', '');

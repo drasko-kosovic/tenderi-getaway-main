@@ -19,6 +19,7 @@ import org.springframework.security.web.server.header.ReferrerPolicyServerHttpHe
 import org.springframework.security.web.server.util.matcher.NegatedServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.OrServerWebExchangeMatcher;
 import org.zalando.problem.spring.webflux.advice.security.SecurityProblemSupport;
+import tech.jhipster.config.JHipsterProperties;
 import tenderi.security.AuthoritiesConstants;
 import tenderi.security.jwt.JWTFilter;
 import tenderi.security.jwt.TokenProvider;
@@ -29,6 +30,8 @@ import tenderi.web.filter.SpaWebFilter;
 @Import(SecurityProblemSupport.class)
 public class SecurityConfiguration {
 
+    private final JHipsterProperties jHipsterProperties;
+
     private final ReactiveUserDetailsService userDetailsService;
 
     private final TokenProvider tokenProvider;
@@ -38,10 +41,12 @@ public class SecurityConfiguration {
     public SecurityConfiguration(
         ReactiveUserDetailsService userDetailsService,
         TokenProvider tokenProvider,
+        JHipsterProperties jHipsterProperties,
         SecurityProblemSupport problemSupport
     ) {
         this.userDetailsService = userDetailsService;
         this.tokenProvider = tokenProvider;
+        this.jHipsterProperties = jHipsterProperties;
         this.problemSupport = problemSupport;
     }
 
@@ -77,7 +82,7 @@ public class SecurityConfiguration {
                 .authenticationEntryPoint(problemSupport)
         .and()
             .headers()
-                .contentSecurityPolicy("default-src 'self'; frame-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://storage.googleapis.com https://www.google-analytics.com; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; font-src 'self' https://fonts.gstatic.com data:")
+            .contentSecurityPolicy(jHipsterProperties.getSecurity().getContentSecurityPolicy())
             .and()
                 .referrerPolicy(ReferrerPolicyServerHttpHeadersWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN)
             .and()
@@ -88,9 +93,9 @@ public class SecurityConfiguration {
             .authorizeExchange()
             .pathMatchers("/").permitAll()
             .pathMatchers("/*.*").permitAll()
+            .pathMatchers("/api/authenticate").permitAll()
             .pathMatchers("/api/register").permitAll()
             .pathMatchers("/api/activate").permitAll()
-            .pathMatchers("/api/authenticate").permitAll()
             .pathMatchers("/api/account/reset-password/init").permitAll()
             .pathMatchers("/api/account/reset-password/finish").permitAll()
             .pathMatchers("/api/auth-info").permitAll()

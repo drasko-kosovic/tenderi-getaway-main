@@ -113,11 +113,13 @@ describe('Service Tests', () => {
       it('should partial update a Ponude', () => {
         const patchObject = Object.assign(
           {
-            sifraPonude: 1,
             sifraPostupka: 1,
             brojPartije: 1,
+            nazivProizvodjaca: 'BBBBBB',
             zasticeniNaziv: 'BBBBBB',
+            ponudjenaVrijednost: 1,
             rokIsporuke: 1,
+            sifraPonudjaca: 1,
           },
           new Ponude()
         );
@@ -208,7 +210,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique Ponude to an array', () => {
-          const ponudeArray: IPonude[] = [{ id: 123 }, { id: 456 }, { id: 27163 }];
+          const ponudeArray: IPonude[] = [{ id: 123 }, { id: 456 }, { id: 76248 }];
           const ponudeCollection: IPonude[] = [{ id: 123 }];
           expectedResult = service.addPonudeToCollectionIfMissing(ponudeCollection, ...ponudeArray);
           expect(expectedResult).toHaveLength(3);
@@ -228,6 +230,12 @@ describe('Service Tests', () => {
           expectedResult = service.addPonudeToCollectionIfMissing([], null, ponude, undefined);
           expect(expectedResult).toHaveLength(1);
           expect(expectedResult).toContain(ponude);
+        });
+
+        it('should return initial array if no Ponude is added', () => {
+          const ponudeCollection: IPonude[] = [{ id: 123 }];
+          expectedResult = service.addPonudeToCollectionIfMissing(ponudeCollection, undefined, null);
+          expect(expectedResult).toEqual(ponudeCollection);
         });
       });
     });

@@ -1,135 +1,140 @@
+import { entityItemSelector } from '../../support/commands';
 import {
   entityTableSelector,
   entityDetailsButtonSelector,
   entityDetailsBackButtonSelector,
   entityCreateButtonSelector,
   entityCreateSaveButtonSelector,
+  entityCreateCancelButtonSelector,
   entityEditButtonSelector,
   entityDeleteButtonSelector,
   entityConfirmDeleteButtonSelector,
 } from '../../support/entity';
 
 describe('Ponudjaci e2e test', () => {
-  let startingEntitiesCount = 0;
+  const ponudjaciPageUrl = '/ponudjaci';
+  const ponudjaciPageUrlPattern = new RegExp('/ponudjaci(\\?.*)?$');
+  const username = Cypress.env('E2E_USERNAME') ?? 'admin';
+  const password = Cypress.env('E2E_PASSWORD') ?? 'admin';
 
   before(() => {
     cy.window().then(win => {
       win.sessionStorage.clear();
     });
-
-    cy.clearCookies();
-    cy.intercept('GET', '/services/otvoreni/api/ponudjacis*').as('entitiesRequest');
     cy.visit('');
-    cy.login('admin', 'admin');
-    cy.clickOnEntityMenuItem('ponudjaci');
-    cy.wait('@entitiesRequest').then(({ request, response }) => (startingEntitiesCount = response.body.length));
-    cy.visit('/');
+    cy.login(username, password);
+    cy.get(entityItemSelector).should('exist');
+  });
+
+  beforeEach(() => {
+    cy.intercept('GET', '/services/otvoreni/api/ponudjacis+(?*|)').as('entitiesRequest');
+    cy.intercept('POST', '/services/otvoreni/api/ponudjacis').as('postEntityRequest');
+    cy.intercept('DELETE', '/services/otvoreni/api/ponudjacis/*').as('deleteEntityRequest');
   });
 
   it('should load Ponudjacis', () => {
-    cy.intercept('GET', '/services/otvoreni/api/ponudjacis*').as('entitiesRequest');
     cy.visit('/');
     cy.clickOnEntityMenuItem('ponudjaci');
-    cy.wait('@entitiesRequest');
+    cy.wait('@entitiesRequest').then(({ response }) => {
+      if (response.body.length === 0) {
+        cy.get(entityTableSelector).should('not.exist');
+      } else {
+        cy.get(entityTableSelector).should('exist');
+      }
+    });
     cy.getEntityHeading('Ponudjaci').should('exist');
-    if (startingEntitiesCount === 0) {
-      cy.get(entityTableSelector).should('not.exist');
-    } else {
-      cy.get(entityTableSelector).should('have.lengthOf', startingEntitiesCount);
-    }
-    cy.visit('/');
+    cy.url().should('match', ponudjaciPageUrlPattern);
   });
 
-  it('should load details Ponudjaci page', () => {
-    cy.intercept('GET', '/services/otvoreni/api/ponudjacis*').as('entitiesRequest');
-    cy.visit('/');
-    cy.clickOnEntityMenuItem('ponudjaci');
-    cy.wait('@entitiesRequest');
-    if (startingEntitiesCount > 0) {
-      cy.get(entityDetailsButtonSelector).first().click({ force: true });
-      cy.getEntityDetailsHeading('ponudjaci');
-      cy.get(entityDetailsBackButtonSelector).should('exist');
-    }
-    cy.visit('/');
+  it('should load details Ponudjaci page', function () {
+    cy.visit(ponudjaciPageUrl);
+    cy.wait('@entitiesRequest').then(({ response }) => {
+      if (response.body.length === 0) {
+        this.skip();
+      }
+    });
+    cy.get(entityDetailsButtonSelector).first().click({ force: true });
+    cy.getEntityDetailsHeading('ponudjaci');
+    cy.get(entityDetailsBackButtonSelector).click({ force: true });
+    cy.wait('@entitiesRequest').then(({ response }) => {
+      expect(response.statusCode).to.equal(200);
+    });
+    cy.url().should('match', ponudjaciPageUrlPattern);
   });
 
   it('should load create Ponudjaci page', () => {
-    cy.intercept('GET', '/services/otvoreni/api/ponudjacis*').as('entitiesRequest');
-    cy.visit('/');
-    cy.clickOnEntityMenuItem('ponudjaci');
+    cy.visit(ponudjaciPageUrl);
     cy.wait('@entitiesRequest');
     cy.get(entityCreateButtonSelector).click({ force: true });
     cy.getEntityCreateUpdateHeading('Ponudjaci');
     cy.get(entityCreateSaveButtonSelector).should('exist');
-    cy.visit('/');
+    cy.get(entityCreateCancelButtonSelector).click({ force: true });
+    cy.wait('@entitiesRequest').then(({ response }) => {
+      expect(response.statusCode).to.equal(200);
+    });
+    cy.url().should('match', ponudjaciPageUrlPattern);
   });
 
-  it('should load edit Ponudjaci page', () => {
-    cy.intercept('GET', '/services/otvoreni/api/ponudjacis*').as('entitiesRequest');
-    cy.visit('/');
-    cy.clickOnEntityMenuItem('ponudjaci');
-    cy.wait('@entitiesRequest');
-    if (startingEntitiesCount > 0) {
-      cy.get(entityEditButtonSelector).first().click({ force: true });
-      cy.getEntityCreateUpdateHeading('Ponudjaci');
-      cy.get(entityCreateSaveButtonSelector).should('exist');
-    }
-    cy.visit('/');
+  it('should load edit Ponudjaci page', function () {
+    cy.visit(ponudjaciPageUrl);
+    cy.wait('@entitiesRequest').then(({ response }) => {
+      if (response.body.length === 0) {
+        this.skip();
+      }
+    });
+    cy.get(entityEditButtonSelector).first().click({ force: true });
+    cy.getEntityCreateUpdateHeading('Ponudjaci');
+    cy.get(entityCreateSaveButtonSelector).should('exist');
+    cy.get(entityCreateCancelButtonSelector).click({ force: true });
+    cy.wait('@entitiesRequest').then(({ response }) => {
+      expect(response.statusCode).to.equal(200);
+    });
+    cy.url().should('match', ponudjaciPageUrlPattern);
   });
 
   it('should create an instance of Ponudjaci', () => {
-    cy.intercept('GET', '/services/otvoreni/api/ponudjacis*').as('entitiesRequest');
-    cy.visit('/');
-    cy.clickOnEntityMenuItem('ponudjaci');
-    cy.wait('@entitiesRequest').then(({ request, response }) => (startingEntitiesCount = response.body.length));
+    cy.visit(ponudjaciPageUrl);
     cy.get(entityCreateButtonSelector).click({ force: true });
     cy.getEntityCreateUpdateHeading('Ponudjaci');
 
-    cy.get(`[data-cy="nazivPonudjaca"]`).type('override', { force: true }).invoke('val').should('match', new RegExp('override'));
+    cy.get(`[data-cy="nazivPonudjaca"]`).type('Fresh Fundamental').should('have.value', 'Fresh Fundamental');
 
-    cy.get(`[data-cy="odgovornoLice"]`)
-      .type('Account Wyoming Mouse', { force: true })
-      .invoke('val')
-      .should('match', new RegExp('Account Wyoming Mouse'));
+    cy.get(`[data-cy="odgovornoLice"]`).type('Cotton').should('have.value', 'Cotton');
 
-    cy.get(`[data-cy="adresaPonudjaca"]`)
-      .type('infrastructures Quality', { force: true })
-      .invoke('val')
-      .should('match', new RegExp('infrastructures Quality'));
+    cy.get(`[data-cy="adresaPonudjaca"]`).type('connect Colombia expedite').should('have.value', 'connect Colombia expedite');
 
-    cy.get(`[data-cy="bankaRacun"]`).type('copying', { force: true }).invoke('val').should('match', new RegExp('copying'));
+    cy.get(`[data-cy="bankaRacun"]`).type('Technician').should('have.value', 'Technician');
 
     cy.get(entityCreateSaveButtonSelector).click({ force: true });
     cy.scrollTo('top', { ensureScrollable: false });
     cy.get(entityCreateSaveButtonSelector).should('not.exist');
-    cy.intercept('GET', '/services/otvoreni/api/ponudjacis*').as('entitiesRequestAfterCreate');
-    cy.visit('/');
-    cy.clickOnEntityMenuItem('ponudjaci');
-    cy.wait('@entitiesRequestAfterCreate');
-    cy.get(entityTableSelector).should('have.lengthOf', startingEntitiesCount + 1);
-    cy.visit('/');
+    cy.wait('@postEntityRequest').then(({ response }) => {
+      expect(response.statusCode).to.equal(201);
+    });
+    cy.wait('@entitiesRequest').then(({ response }) => {
+      expect(response.statusCode).to.equal(200);
+    });
+    cy.url().should('match', ponudjaciPageUrlPattern);
   });
 
-  it('should delete last instance of Ponudjaci', () => {
-    cy.intercept('GET', '/services/otvoreni/api/ponudjacis*').as('entitiesRequest');
-    cy.intercept('DELETE', '/services/otvoreni/api/ponudjacis/*').as('deleteEntityRequest');
-    cy.visit('/');
-    cy.clickOnEntityMenuItem('ponudjaci');
-    cy.wait('@entitiesRequest').then(({ request, response }) => {
-      startingEntitiesCount = response.body.length;
-      if (startingEntitiesCount > 0) {
-        cy.get(entityTableSelector).should('have.lengthOf', startingEntitiesCount);
+  it('should delete last instance of Ponudjaci', function () {
+    cy.visit(ponudjaciPageUrl);
+    cy.wait('@entitiesRequest').then(({ response }) => {
+      if (response.body.length > 0) {
+        cy.get(entityTableSelector).should('have.lengthOf', response.body.length);
         cy.get(entityDeleteButtonSelector).last().click({ force: true });
         cy.getEntityDeleteDialogHeading('ponudjaci').should('exist');
         cy.get(entityConfirmDeleteButtonSelector).click({ force: true });
-        cy.wait('@deleteEntityRequest');
-        cy.intercept('GET', '/services/otvoreni/api/ponudjacis*').as('entitiesRequestAfterDelete');
-        cy.visit('/');
-        cy.clickOnEntityMenuItem('ponudjaci');
-        cy.wait('@entitiesRequestAfterDelete');
-        cy.get(entityTableSelector).should('have.lengthOf', startingEntitiesCount - 1);
+        cy.wait('@deleteEntityRequest').then(({ response }) => {
+          expect(response.statusCode).to.equal(204);
+        });
+        cy.wait('@entitiesRequest').then(({ response }) => {
+          expect(response.statusCode).to.equal(200);
+        });
+        cy.url().should('match', ponudjaciPageUrlPattern);
+      } else {
+        this.skip();
       }
-      cy.visit('/');
     });
   });
 });

@@ -15,9 +15,9 @@ export type EntityArrayResponseType = HttpResponse<IUgovor[]>;
 
 @Injectable({ providedIn: 'root' })
 export class UgovorService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/ugovors', 'otvoreni');
+  protected resourceUrl = this.applicationConfigService.getEndpointFor('api/ugovors', 'otvoreni');
 
-  constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
+  constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
   create(ugovor: IUgovor): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(ugovor);

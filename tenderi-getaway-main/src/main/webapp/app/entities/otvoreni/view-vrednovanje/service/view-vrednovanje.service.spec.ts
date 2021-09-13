@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { IViewVrednovanje, ViewVrednovanje } from '../view-vrednovanje.model';
+import { IViewVrednovanje } from '../view-vrednovanje.model';
 
 import { ViewVrednovanjeService } from './view-vrednovanje.service';
 
@@ -119,7 +119,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique ViewVrednovanje to an array', () => {
-          const viewVrednovanjeArray: IViewVrednovanje[] = [{ id: 123 }, { id: 456 }, { id: 39290 }];
+          const viewVrednovanjeArray: IViewVrednovanje[] = [{ id: 123 }, { id: 456 }, { id: 64210 }];
           const viewVrednovanjeCollection: IViewVrednovanje[] = [{ id: 123 }];
           expectedResult = service.addViewVrednovanjeToCollectionIfMissing(viewVrednovanjeCollection, ...viewVrednovanjeArray);
           expect(expectedResult).toHaveLength(3);
@@ -139,6 +139,12 @@ describe('Service Tests', () => {
           expectedResult = service.addViewVrednovanjeToCollectionIfMissing([], null, viewVrednovanje, undefined);
           expect(expectedResult).toHaveLength(1);
           expect(expectedResult).toContain(viewVrednovanje);
+        });
+
+        it('should return initial array if no ViewVrednovanje is added', () => {
+          const viewVrednovanjeCollection: IViewVrednovanje[] = [{ id: 123 }];
+          expectedResult = service.addViewVrednovanjeToCollectionIfMissing(viewVrednovanjeCollection, undefined, null);
+          expect(expectedResult).toEqual(viewVrednovanjeCollection);
         });
       });
     });

@@ -88,7 +88,7 @@ describe('Service Tests', () => {
         const patchObject = Object.assign(
           {
             brojPartije: 1,
-            inn: 'BBBBBB',
+            farmaceutskiOblikLijeka: 'BBBBBB',
             pakovanje: 'BBBBBB',
             procijenjenaVrijednost: 1,
           },
@@ -168,7 +168,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique HvalePonude to an array', () => {
-          const hvalePonudeArray: IHvalePonude[] = [{ id: 123 }, { id: 456 }, { id: 8211 }];
+          const hvalePonudeArray: IHvalePonude[] = [{ id: 123 }, { id: 456 }, { id: 12387 }];
           const hvalePonudeCollection: IHvalePonude[] = [{ id: 123 }];
           expectedResult = service.addHvalePonudeToCollectionIfMissing(hvalePonudeCollection, ...hvalePonudeArray);
           expect(expectedResult).toHaveLength(3);
@@ -188,6 +188,12 @@ describe('Service Tests', () => {
           expectedResult = service.addHvalePonudeToCollectionIfMissing([], null, hvalePonude, undefined);
           expect(expectedResult).toHaveLength(1);
           expect(expectedResult).toContain(hvalePonude);
+        });
+
+        it('should return initial array if no HvalePonude is added', () => {
+          const hvalePonudeCollection: IHvalePonude[] = [{ id: 123 }];
+          expectedResult = service.addHvalePonudeToCollectionIfMissing(hvalePonudeCollection, undefined, null);
+          expect(expectedResult).toEqual(hvalePonudeCollection);
         });
       });
     });

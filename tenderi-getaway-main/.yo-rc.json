@@ -4,7 +4,7 @@
     "otherModules": [],
     "applicationType": "gateway",
     "baseName": "tenderi",
-    "jhipsterVersion": "7.0.0",
+    "jhipsterVersion": "7.1.0",
     "skipClient": false,
     "skipServer": false,
     "skipUserManagement": false,
@@ -58,6 +58,7 @@
     "herokuAppName": "tenderi-micro-getaway",
     "herokuDeployType": "git",
     "herokuJavaVersion": "11",
-    "appFolder": "tenderi-getaway"
+    "appFolder": "tenderi-getaway",
+    "devServerPort": 4200
   }
 }

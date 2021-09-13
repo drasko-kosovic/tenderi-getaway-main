@@ -12,9 +12,9 @@ export type EntityArrayResponseType = HttpResponse<IViewPrvorangirani[]>;
 
 @Injectable({ providedIn: 'root' })
 export class ViewPrvorangiraniService {
-  public resourceUrl = this.applicationConfigService.getEndpointFor('api/view-prvorangiranis', 'otvoreni');
+  protected resourceUrl = this.applicationConfigService.getEndpointFor('api/view-prvorangiranis', 'otvoreni');
 
-  constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
+  constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
   find(id: number): Observable<EntityResponseType> {
     return this.http.get<IViewPrvorangirani>(`${this.resourceUrl}/${id}`, { observe: 'response' });

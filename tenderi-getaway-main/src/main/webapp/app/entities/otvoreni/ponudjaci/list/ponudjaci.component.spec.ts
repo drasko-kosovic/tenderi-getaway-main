@@ -47,7 +47,7 @@ describe('Component Tests', () => {
       service = TestBed.inject(PonudjaciService);
 
       const headers = new HttpHeaders().append('link', 'link;link');
-      spyOn(service, 'query').and.returnValue(
+      jest.spyOn(service, 'query').mockReturnValue(
         of(
           new HttpResponse({
             body: [{ id: 123 }],
@@ -63,7 +63,7 @@ describe('Component Tests', () => {
 
       // THEN
       expect(service.query).toHaveBeenCalled();
-      expect(comp.ponudjacis?.[0]).toEqual(jasmine.objectContaining({ id: 123 }));
+      expect(comp.ponudjacis?.[0]).toEqual(expect.objectContaining({ id: 123 }));
     });
 
     it('should load a page', () => {
@@ -72,7 +72,7 @@ describe('Component Tests', () => {
 
       // THEN
       expect(service.query).toHaveBeenCalled();
-      expect(comp.ponudjacis?.[0]).toEqual(jasmine.objectContaining({ id: 123 }));
+      expect(comp.ponudjacis?.[0]).toEqual(expect.objectContaining({ id: 123 }));
     });
 
     it('should calculate the sort attribute for an id', () => {
