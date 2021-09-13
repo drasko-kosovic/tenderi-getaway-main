@@ -1,0 +1,66 @@
+{
+  "microservicePath": "C:\\Users\\drasko\\IdeaProjects\\otvoreni-micro",
+  "microserviceName": "otvoreni",
+  "clientRootFolder": "otvoreni",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "sifra_postupka",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "sifra_ponude",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "atc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "inn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "zasticeni_naziv",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "farmaceutski_oblik_lijeka",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "jacina_lijeka",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pakovanje",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "trazena_kolicina",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "procijenjena_vrijednost",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "rok_isporuke",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "naziv_ponudjaca",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "naziv_proizvodjaca",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "service": "no",
+  "readOnly": false,
+  "pagination": "no",
+  "name": "Anex",
+  "changelogDate": "20210907145656"
+}

@@ -1,0 +1,42 @@
+{
+  "microservicePath": "C:\\Users\\drasko\\IdeaProjects\\otvoreni-micro",
+  "microserviceName": "otvoreni",
+  "clientRootFolder": "otvoreni",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "brojUgovora",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "datumUgovora",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "brojOdluke",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "datumOdluke",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "iznosUgovoraBezPdf",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "sifraPostupka",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "sifraPonude",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [],
+  "service": "no",
+  "readOnly": false,
+  "pagination": "pagination",
+  "name": "Ugovor",
+  "changelogDate": "20210906185421"
+}

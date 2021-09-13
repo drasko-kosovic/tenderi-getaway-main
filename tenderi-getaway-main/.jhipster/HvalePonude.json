@@ -1,0 +1,42 @@
+{
+  "microservicePath": "C:\\Users\\drasko\\IdeaProjects\\otvoreni-micro",
+  "microserviceName": "otvoreni",
+  "clientRootFolder": "otvoreni",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "sifraPostupka",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "brojPartije",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "inn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "farmaceutskiOblikLijeka",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pakovanje",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "trazenaKolicina",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "procijenjenaVrijednost",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [],
+  "service": "no",
+  "readOnly": false,
+  "pagination": "no",
+  "name": "HvalePonude",
+  "changelogDate": "20210907150155"
+}

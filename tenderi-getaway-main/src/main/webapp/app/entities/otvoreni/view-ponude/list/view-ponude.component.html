@@ -1,0 +1,73 @@
+<div>
+  <h2 id="page-heading" data-cy="ViewPonudeHeading">
+    <span jhiTranslate="tenderiApp.otvoreniViewPonude.home.title">View Ponudes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="tenderiApp.otvoreniViewPonude.home.refreshListLabel">Refresh List</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="viewPonudes?.length === 0">
+    <span jhiTranslate="tenderiApp.otvoreniViewPonude.home.notFound">No viewPonudes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="viewPonudes && viewPonudes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPonude.sifraPostupka">Sifra Postupka</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPonude.sifraPonude">Sifra Ponude</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPonude.brojPartije">Broj Partije</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPonude.sifraPonudjaca">Sifra Ponudjaca</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPonude.nazivPonudjaca">Naziv Ponudjaca</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPonude.nazivProizvodjaca">Naziv Proizvodjaca</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPonude.zasticeniNaziv">Zasticeni Naziv</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPonude.ponudjenaVrijednost">Ponudjena Vrijednost</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPonude.rokIsporuke">Rok Isporuke</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPonude.selected">Selected</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPonude.datumPonude">Datum Ponude</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let viewPonude of viewPonudes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/view-ponude', viewPonude.id, 'view']">{{ viewPonude.id }}</a>
+          </td>
+          <td>{{ viewPonude.sifraPostupka }}</td>
+          <td>{{ viewPonude.sifraPonude }}</td>
+          <td>{{ viewPonude.brojPartije }}</td>
+          <td>{{ viewPonude.sifraPonudjaca }}</td>
+          <td>{{ viewPonude.nazivPonudjaca }}</td>
+          <td>{{ viewPonude.nazivProizvodjaca }}</td>
+          <td>{{ viewPonude.zasticeniNaziv }}</td>
+          <td>{{ viewPonude.ponudjenaVrijednost }}</td>
+          <td>{{ viewPonude.rokIsporuke }}</td>
+          <td>{{ viewPonude.selected }}</td>
+          <td>{{ viewPonude.datumPonude | formatMediumDate }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/view-ponude', viewPonude.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

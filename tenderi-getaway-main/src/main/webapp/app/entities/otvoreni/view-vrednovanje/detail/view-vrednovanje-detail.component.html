@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="viewVrednovanje">
+      <h2 data-cy="viewVrednovanjeDetailsHeading">
+        <span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.detail.title">View Vrednovanje</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.sifraPostupka">Sifra Postupka</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.sifraPostupka }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.sifraPonude">Sifra Ponude</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.sifraPonude }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.brojPartije">Broj Partije</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.brojPartije }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.atc">Atc</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.atc }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.inn">Inn</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.inn }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.zasticeniNaziv">Zasticeni Naziv</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.zasticeniNaziv }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.farmaceutskiOblikLijeka">Farmaceutski Oblik Lijeka</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.farmaceutskiOblikLijeka }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.jacinaLijeka">Jacina Lijeka</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.jacinaLijeka }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.pakovanje">Pakovanje</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.pakovanje }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.trazenaKolicina">Trazena Kolicina</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.trazenaKolicina }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.procijenjenaVrijednost">Procijenjena Vrijednost</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.procijenjenaVrijednost }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.ponudjenaVrijednost">Ponudjena Vrijednost</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.ponudjenaVrijednost }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.rokIsporuke">Rok Isporuke</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.rokIsporuke }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.nazivProizvodjaca">Naziv Proizvodjaca</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.nazivProizvodjaca }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.nazivPonudjaca">Naziv Ponudjaca</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.nazivPonudjaca }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.bodCijena">Bod Cijena</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.bodCijena }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.bodRok">Bod Rok</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.bodRok }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.bodUkupno">Bod Ukupno</span></dt>
+        <dd>
+          <span>{{ viewVrednovanje.bodUkupno }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+    </div>
+  </div>
+</div>

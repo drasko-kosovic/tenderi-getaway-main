@@ -1,0 +1,92 @@
+<div>
+  <h2 id="page-heading" data-cy="AnexHeading">
+    <span jhiTranslate="tenderiApp.otvoreniAnex.home.title">Anexes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="tenderiApp.otvoreniAnex.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-anex"
+        [routerLink]="['/anex/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="tenderiApp.otvoreniAnex.home.createLabel"> Create a new Anex </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="anexes?.length === 0">
+    <span jhiTranslate="tenderiApp.otvoreniAnex.home.notFound">No anexes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="anexes && anexes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniAnex.sifra_postupka">Sifra Postupka</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniAnex.sifra_ponude">Sifra Ponude</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniAnex.atc">Atc</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniAnex.inn">Inn</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniAnex.zasticeni_naziv">Zasticeni Naziv</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniAnex.farmaceutski_oblik_lijeka">Farmaceutski Oblik Lijeka</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniAnex.jacina_lijeka">Jacina Lijeka</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniAnex.pakovanje">Pakovanje</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniAnex.trazena_kolicina">Trazena Kolicina</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniAnex.procijenjena_vrijednost">Procijenjena Vrijednost</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniAnex.rok_isporuke">Rok Isporuke</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniAnex.naziv_ponudjaca">Naziv Ponudjaca</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniAnex.naziv_proizvodjaca">Naziv Proizvodjaca</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let anex of anexes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/anex', anex.id, 'view']">{{ anex.id }}</a>
+          </td>
+          <td>{{ anex.sifra_postupka }}</td>
+          <td>{{ anex.sifra_ponude }}</td>
+          <td>{{ anex.atc }}</td>
+          <td>{{ anex.inn }}</td>
+          <td>{{ anex.zasticeni_naziv }}</td>
+          <td>{{ anex.farmaceutski_oblik_lijeka }}</td>
+          <td>{{ anex.jacina_lijeka }}</td>
+          <td>{{ anex.pakovanje }}</td>
+          <td>{{ anex.trazena_kolicina }}</td>
+          <td>{{ anex.procijenjena_vrijednost }}</td>
+          <td>{{ anex.rok_isporuke }}</td>
+          <td>{{ anex.naziv_ponudjaca }}</td>
+          <td>{{ anex.naziv_proizvodjaca }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/anex', anex.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/anex', anex.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(anex)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

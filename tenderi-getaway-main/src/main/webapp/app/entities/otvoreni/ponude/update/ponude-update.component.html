@@ -1,0 +1,226 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-ponude-heading" data-cy="PonudeCreateUpdateHeading" jhiTranslate="tenderiApp.otvoreniPonude.home.createOrEditLabel">
+        Create or edit a Ponude
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniPonude.sifraPonude" for="field_sifraPonude"
+            >Sifra Ponude</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="sifraPonude"
+            id="field_sifraPonude"
+            data-cy="sifraPonude"
+            formControlName="sifraPonude"
+          />
+          <div *ngIf="editForm.get('sifraPonude')!.invalid && (editForm.get('sifraPonude')!.dirty || editForm.get('sifraPonude')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('sifraPonude')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('sifraPonude')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniPonude.sifraPostupka" for="field_sifraPostupka"
+            >Sifra Postupka</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="sifraPostupka"
+            id="field_sifraPostupka"
+            data-cy="sifraPostupka"
+            formControlName="sifraPostupka"
+          />
+          <div
+            *ngIf="
+              editForm.get('sifraPostupka')!.invalid && (editForm.get('sifraPostupka')!.dirty || editForm.get('sifraPostupka')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('sifraPostupka')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('sifraPostupka')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniPonude.brojPartije" for="field_brojPartije"
+            >Broj Partije</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="brojPartije"
+            id="field_brojPartije"
+            data-cy="brojPartije"
+            formControlName="brojPartije"
+          />
+          <div *ngIf="editForm.get('brojPartije')!.invalid && (editForm.get('brojPartije')!.dirty || editForm.get('brojPartije')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('brojPartije')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('brojPartije')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniPonude.nazivProizvodjaca" for="field_nazivProizvodjaca"
+            >Naziv Proizvodjaca</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nazivProizvodjaca"
+            id="field_nazivProizvodjaca"
+            data-cy="nazivProizvodjaca"
+            formControlName="nazivProizvodjaca"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniPonude.zasticeniNaziv" for="field_zasticeniNaziv"
+            >Zasticeni Naziv</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="zasticeniNaziv"
+            id="field_zasticeniNaziv"
+            data-cy="zasticeniNaziv"
+            formControlName="zasticeniNaziv"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniPonude.ponudjenaVrijednost" for="field_ponudjenaVrijednost"
+            >Ponudjena Vrijednost</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="ponudjenaVrijednost"
+            id="field_ponudjenaVrijednost"
+            data-cy="ponudjenaVrijednost"
+            formControlName="ponudjenaVrijednost"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniPonude.rokIsporuke" for="field_rokIsporuke"
+            >Rok Isporuke</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="rokIsporuke"
+            id="field_rokIsporuke"
+            data-cy="rokIsporuke"
+            formControlName="rokIsporuke"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniPonude.datumPonude" for="field_datumPonude"
+            >Datum Ponude</label
+          >
+          <div class="input-group">
+            <input
+              id="field_datumPonude"
+              data-cy="datumPonude"
+              type="text"
+              class="form-control"
+              name="datumPonude"
+              ngbDatepicker
+              #datumPonudeDp="ngbDatepicker"
+              formControlName="datumPonude"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="datumPonudeDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniPonude.sifraPonudjaca" for="field_sifraPonudjaca"
+            >Sifra Ponudjaca</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="sifraPonudjaca"
+            id="field_sifraPonudjaca"
+            data-cy="sifraPonudjaca"
+            formControlName="sifraPonudjaca"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniPonude.selected" for="field_selected">Selected</label>
+          <input type="checkbox" class="form-check" name="selected" id="field_selected" data-cy="selected" formControlName="selected" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

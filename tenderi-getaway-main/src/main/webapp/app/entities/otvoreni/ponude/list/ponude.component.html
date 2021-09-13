@@ -1,0 +1,86 @@
+<div>
+  <h2 id="page-heading" data-cy="PonudeHeading">
+    <span jhiTranslate="tenderiApp.otvoreniPonude.home.title">Ponudes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="tenderiApp.otvoreniPonude.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-ponude"
+        [routerLink]="['/ponude/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="tenderiApp.otvoreniPonude.home.createLabel"> Create a new Ponude </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="ponudes?.length === 0">
+    <span jhiTranslate="tenderiApp.otvoreniPonude.home.notFound">No ponudes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="ponudes && ponudes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniPonude.sifraPonude">Sifra Ponude</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniPonude.sifraPostupka">Sifra Postupka</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniPonude.brojPartije">Broj Partije</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniPonude.nazivProizvodjaca">Naziv Proizvodjaca</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniPonude.zasticeniNaziv">Zasticeni Naziv</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniPonude.ponudjenaVrijednost">Ponudjena Vrijednost</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniPonude.rokIsporuke">Rok Isporuke</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniPonude.datumPonude">Datum Ponude</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniPonude.sifraPonudjaca">Sifra Ponudjaca</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniPonude.selected">Selected</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ponude of ponudes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/ponude', ponude.id, 'view']">{{ ponude.id }}</a>
+          </td>
+          <td>{{ ponude.sifraPonude }}</td>
+          <td>{{ ponude.sifraPostupka }}</td>
+          <td>{{ ponude.brojPartije }}</td>
+          <td>{{ ponude.nazivProizvodjaca }}</td>
+          <td>{{ ponude.zasticeniNaziv }}</td>
+          <td>{{ ponude.ponudjenaVrijednost }}</td>
+          <td>{{ ponude.rokIsporuke }}</td>
+          <td>{{ ponude.datumPonude | formatMediumDate }}</td>
+          <td>{{ ponude.sifraPonudjaca }}</td>
+          <td>{{ ponude.selected }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/ponude', ponude.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/ponude', ponude.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(ponude)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="viewPonude">
+      <h2 data-cy="viewPonudeDetailsHeading"><span jhiTranslate="tenderiApp.otvoreniViewPonude.detail.title">View Ponude</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ viewPonude.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPonude.sifraPostupka">Sifra Postupka</span></dt>
+        <dd>
+          <span>{{ viewPonude.sifraPostupka }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPonude.sifraPonude">Sifra Ponude</span></dt>
+        <dd>
+          <span>{{ viewPonude.sifraPonude }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPonude.brojPartije">Broj Partije</span></dt>
+        <dd>
+          <span>{{ viewPonude.brojPartije }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPonude.sifraPonudjaca">Sifra Ponudjaca</span></dt>
+        <dd>
+          <span>{{ viewPonude.sifraPonudjaca }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPonude.nazivPonudjaca">Naziv Ponudjaca</span></dt>
+        <dd>
+          <span>{{ viewPonude.nazivPonudjaca }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPonude.nazivProizvodjaca">Naziv Proizvodjaca</span></dt>
+        <dd>
+          <span>{{ viewPonude.nazivProizvodjaca }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPonude.zasticeniNaziv">Zasticeni Naziv</span></dt>
+        <dd>
+          <span>{{ viewPonude.zasticeniNaziv }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPonude.ponudjenaVrijednost">Ponudjena Vrijednost</span></dt>
+        <dd>
+          <span>{{ viewPonude.ponudjenaVrijednost }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPonude.rokIsporuke">Rok Isporuke</span></dt>
+        <dd>
+          <span>{{ viewPonude.rokIsporuke }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPonude.selected">Selected</span></dt>
+        <dd>
+          <span>{{ viewPonude.selected }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPonude.datumPonude">Datum Ponude</span></dt>
+        <dd>
+          <span>{{ viewPonude.datumPonude | formatMediumDate }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+    </div>
+  </div>
+</div>

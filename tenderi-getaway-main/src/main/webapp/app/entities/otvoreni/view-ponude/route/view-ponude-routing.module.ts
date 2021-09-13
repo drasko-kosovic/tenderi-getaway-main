@@ -1,0 +1,29 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
+import { ViewPonudeComponent } from '../list/view-ponude.component';
+import { ViewPonudeDetailComponent } from '../detail/view-ponude-detail.component';
+import { ViewPonudeRoutingResolveService } from './view-ponude-routing-resolve.service';
+
+const viewPonudeRoute: Routes = [
+  {
+    path: '',
+    component: ViewPonudeComponent,
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: ':id/view',
+    component: ViewPonudeDetailComponent,
+    resolve: {
+      viewPonude: ViewPonudeRoutingResolveService,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(viewPonudeRoute)],
+  exports: [RouterModule],
+})
+export class ViewPonudeRoutingModule {}

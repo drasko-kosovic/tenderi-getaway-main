@@ -1,0 +1,58 @@
+{
+  "microservicePath": "C:\\Users\\drasko\\IdeaProjects\\otvoreni-micro",
+  "microserviceName": "otvoreni",
+  "clientRootFolder": "otvoreni",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "sifraPostupka",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "sifraPonude",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "brojPartije",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "sifraPonudjaca",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nazivPonudjaca",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nazivProizvodjaca",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "zasticeniNaziv",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ponudjenaVrijednost",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "rokIsporuke",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "selected",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "datumPonude",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [],
+  "service": "no",
+  "readOnly": true,
+  "pagination": "no",
+  "name": "ViewPonude",
+  "changelogDate": "20210908194542"
+}

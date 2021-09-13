@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ugovor">
+      <h2 data-cy="ugovorDetailsHeading"><span jhiTranslate="tenderiApp.otvoreniUgovor.detail.title">Ugovor</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ ugovor.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniUgovor.brojUgovora">Broj Ugovora</span></dt>
+        <dd>
+          <span>{{ ugovor.brojUgovora }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniUgovor.datumUgovora">Datum Ugovora</span></dt>
+        <dd>
+          <span>{{ ugovor.datumUgovora | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniUgovor.brojOdluke">Broj Odluke</span></dt>
+        <dd>
+          <span>{{ ugovor.brojOdluke }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniUgovor.datumOdluke">Datum Odluke</span></dt>
+        <dd>
+          <span>{{ ugovor.datumOdluke | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniUgovor.iznosUgovoraBezPdf">Iznos Ugovora Bez Pdf</span></dt>
+        <dd>
+          <span>{{ ugovor.iznosUgovoraBezPdf }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniUgovor.sifraPostupka">Sifra Postupka</span></dt>
+        <dd>
+          <span>{{ ugovor.sifraPostupka }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniUgovor.sifraPonude">Sifra Ponude</span></dt>
+        <dd>
+          <span>{{ ugovor.sifraPonude }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ugovor', ugovor.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

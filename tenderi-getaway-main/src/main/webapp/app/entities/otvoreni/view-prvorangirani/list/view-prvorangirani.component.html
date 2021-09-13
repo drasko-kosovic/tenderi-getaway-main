@@ -1,0 +1,91 @@
+<div>
+  <h2 id="page-heading" data-cy="ViewPrvorangiraniHeading">
+    <span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.home.title">View Prvorangiranis</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.home.refreshListLabel">Refresh List</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="viewPrvorangiranis?.length === 0">
+    <span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.home.notFound">No viewPrvorangiranis found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="viewPrvorangiranis && viewPrvorangiranis.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.sifraPostupka">Sifra Postupka</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.sifraPonude">Sifra Ponude</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.brojPartije">Broj Partije</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.atc">Atc</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.inn">Inn</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.zasticeniNaziv">Zasticeni Naziv</span></th>
+          <th scope="col">
+            <span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.farmaceutskiOblikLijeka">Farmaceutski Oblik Lijeka</span>
+          </th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.jacinaLijeka">Jacina Lijeka</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.pakovanje">Pakovanje</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.trazenaKolicina">Trazena Kolicina</span></th>
+          <th scope="col">
+            <span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.procijenjenaVrijednost">Procijenjena Vrijednost</span>
+          </th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.ponudjenaVrijednost">Ponudjena Vrijednost</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.rokIsporuke">Rok Isporuke</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.nazivProizvodjaca">Naziv Proizvodjaca</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.nazivPonudjaca">Naziv Ponudjaca</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.bodCijena">Bod Cijena</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.bodRok">Bod Rok</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.bodUkupno">Bod Ukupno</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let viewPrvorangirani of viewPrvorangiranis; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/view-prvorangirani', viewPrvorangirani.id, 'view']">{{ viewPrvorangirani.id }}</a>
+          </td>
+          <td>{{ viewPrvorangirani.sifraPostupka }}</td>
+          <td>{{ viewPrvorangirani.sifraPonude }}</td>
+          <td>{{ viewPrvorangirani.brojPartije }}</td>
+          <td>{{ viewPrvorangirani.atc }}</td>
+          <td>{{ viewPrvorangirani.inn }}</td>
+          <td>{{ viewPrvorangirani.zasticeniNaziv }}</td>
+          <td>{{ viewPrvorangirani.farmaceutskiOblikLijeka }}</td>
+          <td>{{ viewPrvorangirani.jacinaLijeka }}</td>
+          <td>{{ viewPrvorangirani.pakovanje }}</td>
+          <td>{{ viewPrvorangirani.trazenaKolicina }}</td>
+          <td>{{ viewPrvorangirani.procijenjenaVrijednost }}</td>
+          <td>{{ viewPrvorangirani.ponudjenaVrijednost }}</td>
+          <td>{{ viewPrvorangirani.rokIsporuke }}</td>
+          <td>{{ viewPrvorangirani.nazivProizvodjaca }}</td>
+          <td>{{ viewPrvorangirani.nazivPonudjaca }}</td>
+          <td>{{ viewPrvorangirani.bodCijena }}</td>
+          <td>{{ viewPrvorangirani.bodRok }}</td>
+          <td>{{ viewPrvorangirani.bodUkupno }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/view-prvorangirani', viewPrvorangirani.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

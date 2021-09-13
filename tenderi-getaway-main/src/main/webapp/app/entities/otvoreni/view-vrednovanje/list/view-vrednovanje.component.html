@@ -1,0 +1,89 @@
+<div>
+  <h2 id="page-heading" data-cy="ViewVrednovanjeHeading">
+    <span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.home.title">View Vrednovanjes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.home.refreshListLabel">Refresh List</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="viewVrednovanjes?.length === 0">
+    <span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.home.notFound">No viewVrednovanjes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="viewVrednovanjes && viewVrednovanjes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.sifraPostupka">Sifra Postupka</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.sifraPonude">Sifra Ponude</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.brojPartije">Broj Partije</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.atc">Atc</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.inn">Inn</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.zasticeniNaziv">Zasticeni Naziv</span></th>
+          <th scope="col">
+            <span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.farmaceutskiOblikLijeka">Farmaceutski Oblik Lijeka</span>
+          </th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.jacinaLijeka">Jacina Lijeka</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.pakovanje">Pakovanje</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.trazenaKolicina">Trazena Kolicina</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.procijenjenaVrijednost">Procijenjena Vrijednost</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.ponudjenaVrijednost">Ponudjena Vrijednost</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.rokIsporuke">Rok Isporuke</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.nazivProizvodjaca">Naziv Proizvodjaca</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.nazivPonudjaca">Naziv Ponudjaca</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.bodCijena">Bod Cijena</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.bodRok">Bod Rok</span></th>
+          <th scope="col"><span jhiTranslate="tenderiApp.otvoreniViewVrednovanje.bodUkupno">Bod Ukupno</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let viewVrednovanje of viewVrednovanjes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/view-vrednovanje', viewVrednovanje.id, 'view']">{{ viewVrednovanje.id }}</a>
+          </td>
+          <td>{{ viewVrednovanje.sifraPostupka }}</td>
+          <td>{{ viewVrednovanje.sifraPonude }}</td>
+          <td>{{ viewVrednovanje.brojPartije }}</td>
+          <td>{{ viewVrednovanje.atc }}</td>
+          <td>{{ viewVrednovanje.inn }}</td>
+          <td>{{ viewVrednovanje.zasticeniNaziv }}</td>
+          <td>{{ viewVrednovanje.farmaceutskiOblikLijeka }}</td>
+          <td>{{ viewVrednovanje.jacinaLijeka }}</td>
+          <td>{{ viewVrednovanje.pakovanje }}</td>
+          <td>{{ viewVrednovanje.trazenaKolicina }}</td>
+          <td>{{ viewVrednovanje.procijenjenaVrijednost }}</td>
+          <td>{{ viewVrednovanje.ponudjenaVrijednost }}</td>
+          <td>{{ viewVrednovanje.rokIsporuke }}</td>
+          <td>{{ viewVrednovanje.nazivProizvodjaca }}</td>
+          <td>{{ viewVrednovanje.nazivPonudjaca }}</td>
+          <td>{{ viewVrednovanje.bodCijena }}</td>
+          <td>{{ viewVrednovanje.bodRok }}</td>
+          <td>{{ viewVrednovanje.bodUkupno }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/view-vrednovanje', viewVrednovanje.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

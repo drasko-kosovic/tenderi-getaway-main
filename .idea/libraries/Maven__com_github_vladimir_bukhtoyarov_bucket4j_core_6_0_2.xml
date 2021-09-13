@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.github.vladimir-bukhtoyarov:bucket4j-core:6.0.2">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/vladimir-bukhtoyarov/bucket4j-core/6.0.2/bucket4j-core-6.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/vladimir-bukhtoyarov/bucket4j-core/6.0.2/bucket4j-core-6.0.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/vladimir-bukhtoyarov/bucket4j-core/6.0.2/bucket4j-core-6.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

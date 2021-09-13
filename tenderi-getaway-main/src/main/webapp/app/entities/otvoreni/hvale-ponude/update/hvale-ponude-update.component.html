@@ -1,0 +1,124 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-hvale-ponude-heading"
+        data-cy="HvalePonudeCreateUpdateHeading"
+        jhiTranslate="tenderiApp.otvoreniHvalePonude.home.createOrEditLabel"
+      >
+        Create or edit a Hvale Ponude
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniHvalePonude.sifraPostupka" for="field_sifraPostupka"
+            >Sifra Postupka</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="sifraPostupka"
+            id="field_sifraPostupka"
+            data-cy="sifraPostupka"
+            formControlName="sifraPostupka"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniHvalePonude.brojPartije" for="field_brojPartije"
+            >Broj Partije</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="brojPartije"
+            id="field_brojPartije"
+            data-cy="brojPartije"
+            formControlName="brojPartije"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniHvalePonude.inn" for="field_inn">Inn</label>
+          <input type="text" class="form-control" name="inn" id="field_inn" data-cy="inn" formControlName="inn" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tenderiApp.otvoreniHvalePonude.farmaceutskiOblikLijeka"
+            for="field_farmaceutskiOblikLijeka"
+            >Farmaceutski Oblik Lijeka</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="farmaceutskiOblikLijeka"
+            id="field_farmaceutskiOblikLijeka"
+            data-cy="farmaceutskiOblikLijeka"
+            formControlName="farmaceutskiOblikLijeka"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniHvalePonude.pakovanje" for="field_pakovanje">Pakovanje</label>
+          <input type="text" class="form-control" name="pakovanje" id="field_pakovanje" data-cy="pakovanje" formControlName="pakovanje" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniHvalePonude.trazenaKolicina" for="field_trazenaKolicina"
+            >Trazena Kolicina</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="trazenaKolicina"
+            id="field_trazenaKolicina"
+            data-cy="trazenaKolicina"
+            formControlName="trazenaKolicina"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tenderiApp.otvoreniHvalePonude.procijenjenaVrijednost"
+            for="field_procijenjenaVrijednost"
+            >Procijenjena Vrijednost</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="procijenjenaVrijednost"
+            id="field_procijenjenaVrijednost"
+            data-cy="procijenjenaVrijednost"
+            formControlName="procijenjenaVrijednost"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

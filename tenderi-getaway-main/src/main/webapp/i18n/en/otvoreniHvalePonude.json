@@ -1,0 +1,34 @@
+{
+  "tenderiApp": {
+    "otvoreniHvalePonude": {
+      "home": {
+        "title": "Hvale Ponudes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Hvale Ponude",
+        "createOrEditLabel": "Create or edit a Hvale Ponude",
+        "notFound": "No Hvale Ponudes found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Hvale Ponude {{ id }}?"
+      },
+      "detail": {
+        "title": "Hvale Ponude"
+      },
+      "id": "ID",
+      "sifraPostupka": "Sifra Postupka",
+      "brojPartije": "Broj Partije",
+      "inn": "Inn",
+      "farmaceutskiOblikLijeka": "Farmaceutski Oblik Lijeka",
+      "pakovanje": "Pakovanje",
+      "trazenaKolicina": "Trazena Kolicina",
+      "procijenjenaVrijednost": "Procijenjena Vrijednost"
+    }
+  },
+  "otvoreniApp": {
+    "otvoreniHvalePonude": {
+      "created": "A new Hvale Ponude is created with identifier {{ param }}",
+      "updated": "A Hvale Ponude is updated with identifier {{ param }}",
+      "deleted": "A Hvale Ponude is deleted with identifier {{ param }}"
+    }
+  }
+}
