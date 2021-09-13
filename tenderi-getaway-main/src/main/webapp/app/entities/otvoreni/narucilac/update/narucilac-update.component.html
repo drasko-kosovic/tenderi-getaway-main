@@ -1,0 +1,90 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-narucilac-heading"
+        data-cy="NarucilacCreateUpdateHeading"
+        jhiTranslate="tenderiApp.otvoreniNarucilac.home.createOrEditLabel"
+      >
+        Create or edit a Narucilac
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniNarucilac.naziv" for="field_naziv">Naziv</label>
+          <input type="text" class="form-control" name="naziv" id="field_naziv" data-cy="naziv" formControlName="naziv" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniNarucilac.racun" for="field_racun">Racun</label>
+          <input type="text" class="form-control" name="racun" id="field_racun" data-cy="racun" formControlName="racun" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniNarucilac.telefon" for="field_telefon">Telefon</label>
+          <input type="text" class="form-control" name="telefon" id="field_telefon" data-cy="telefon" formControlName="telefon" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniNarucilac.pib" for="field_pib">Pib</label>
+          <input type="text" class="form-control" name="pib" id="field_pib" data-cy="pib" formControlName="pib" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniNarucilac.pdv" for="field_pdv">Pdv</label>
+          <input type="text" class="form-control" name="pdv" id="field_pdv" data-cy="pdv" formControlName="pdv" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tenderiApp.otvoreniNarucilac.odgovornoLiceNarucioca"
+            for="field_odgovornoLiceNarucioca"
+            >Odgovorno Lice Narucioca</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="odgovornoLiceNarucioca"
+            id="field_odgovornoLiceNarucioca"
+            data-cy="odgovornoLiceNarucioca"
+            formControlName="odgovornoLiceNarucioca"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniNarucilac.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniNarucilac.adresa" for="field_adresa">Adresa</label>
+          <input type="text" class="form-control" name="adresa" id="field_adresa" data-cy="adresa" formControlName="adresa" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

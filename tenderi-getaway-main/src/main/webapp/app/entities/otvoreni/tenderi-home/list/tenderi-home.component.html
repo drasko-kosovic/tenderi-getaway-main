@@ -1,0 +1,45 @@
+<!--<button mat-raised-button (click)="refresh()">-->
+<!--  <mat-icon>refresh</mat-icon>-->
+<!--</button>-->
+
+<div class="tabset">
+  <input type="radio" name="tabset" id="tab1" aria-controls="dunkles" checked />
+  <label for="tab1"><span jhiTranslate="tenderi-home.specifications">Specifikacije</span></label>
+
+  <input type="radio" name="tabset" id="tab2" aria-controls="dunkles" />
+  <label for="tab2"><span jhiTranslate="tenderi-home.offers">Offers</span></label>
+  <input type="radio" name="tabset" id="tab3" aria-controls="dunkles" />
+  <label for="tab3"><span jhiTranslate="tenderi-home.scoring">Scoring</span></label>
+
+  <input type="radio" name="tabset" id="tab4" aria-controls="dunkles" />
+  <label for="tab4"><span jhiTranslate="tenderi-home.first-ranked">First-ranked</span></label>
+
+  <input type="radio" name="tabset" id="tab5" aria-controls="dunkles" />
+  <label matTooltip="Nije prilozena nijedna ponuda ili je neispavna, pi ih treba ponovo raspisati" for="tab5"
+    ><span jhiTranslate="tenderi-home.missing">Missing</span></label
+  >
+
+  <input type="radio" name="tabset" id="tab6" aria-controls="dunkles" />
+  <label for="tab6"><span jhiTranslate="tenderi-home.contract">Contract</span></label>
+
+  <div class="tab-panels">
+    <section id="marzen" class="tab-panel">
+   <jhi-specifikacije [postupak]="sifra"></jhi-specifikacije>
+    </section>
+    <section id="view_ponude" class="tab-panel">
+      <jhi-view-ponude [postupak]="sifra"></jhi-view-ponude>
+    </section>
+    <section id="dunkles" class="tab-panel">
+      <jhi-view-vrednovanje [postupak]="sifra"></jhi-view-vrednovanje>
+    </section>
+    <section id="prvorangirani" class="tab-panel">
+      <jhi-view-prvorangirani [postupak]="sifra"></jhi-view-prvorangirani>
+    </section>
+    <section id="hvale" class="tab-panel">
+      <jhi-hvale-ponude [postupak]="sifra"></jhi-hvale-ponude>
+    </section>
+    <section id="ugovori" class="tab-panel">
+      <jhi-ugovor [postupak]="sifra"></jhi-ugovor>
+    </section>
+  </div>
+</div>

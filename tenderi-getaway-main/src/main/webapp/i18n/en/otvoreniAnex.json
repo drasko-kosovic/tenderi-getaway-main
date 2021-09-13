@@ -1,0 +1,40 @@
+{
+  "tenderiApp": {
+    "otvoreniAnex": {
+      "home": {
+        "title": "Anexes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Anex",
+        "createOrEditLabel": "Create or edit a Anex",
+        "notFound": "No Anexes found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Anex {{ id }}?"
+      },
+      "detail": {
+        "title": "Anex"
+      },
+      "id": "ID",
+      "sifra_postupka": "Sifra Postupka",
+      "sifra_ponude": "Sifra Ponude",
+      "atc": "Atc",
+      "inn": "Inn",
+      "zasticeni_naziv": "Zasticeni Naziv",
+      "farmaceutski_oblik_lijeka": "Farmaceutski Oblik Lijeka",
+      "jacina_lijeka": "Jacina Lijeka",
+      "pakovanje": "Pakovanje",
+      "trazena_kolicina": "Trazena Kolicina",
+      "procijenjena_vrijednost": "Procijenjena Vrijednost",
+      "rok_isporuke": "Rok Isporuke",
+      "naziv_ponudjaca": "Naziv Ponudjaca",
+      "naziv_proizvodjaca": "Naziv Proizvodjaca"
+    }
+  },
+  "otvoreniApp": {
+    "otvoreniAnex": {
+      "created": "A new Anex is created with identifier {{ param }}",
+      "updated": "A Anex is updated with identifier {{ param }}",
+      "deleted": "A Anex is deleted with identifier {{ param }}"
+    }
+  }
+}

@@ -1,0 +1,167 @@
+<div>
+  <mat-card class="example-container mat-elevation-z24">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2 jhiTranslate="settings.title" [translateValues]="{ username: account.login }" *ngIf="account">
+          User settings for [<strong>{{ account.login }}</strong
+          >]
+        </h2>
+
+        <div class="alert alert-success" *ngIf="success" jhiTranslate="settings.messages.success">
+          <strong>Settings saved!</strong>
+        </div>
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <form name="form" role="form" (ngSubmit)="save()" [formGroup]="settingsForm" *ngIf="account" novalidate>
+          <mat-form-field>
+            <mat-label jhiTranslate="settings.form.firstname">First Name</mat-label>
+            <input
+              matInput
+              name="login"
+              id="login"
+              placeholder="{{ 'settings.form.firstname.placeholder' | translate }}"
+              formControlName="firstName"
+              #firstName
+            />
+          </mat-form-field>
+
+          <div
+            *ngIf="
+              settingsForm.get('firstName')!.invalid && (settingsForm.get('firstName')!.dirty || settingsForm.get('firstName')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('firstName')?.errors?.required"
+              jhiTranslate="settings.messages.validate.firstname.required"
+            >
+              Your first name is required.
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('firstName')?.errors?.minlength"
+              jhiTranslate="settings.messages.validate.firstname.minlength"
+            >
+              Your first name is required to be at least 1 character.
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('firstName')?.errors?.maxlength"
+              jhiTranslate="settings.messages.validate.firstname.maxlength"
+            >
+              Your first name cannot be longer than 50 characters.
+            </small>
+          </div>
+
+          <mat-form-field>
+            <mat-label jhiTranslate="settings.form.lastname">Last Name</mat-label>
+            <input
+              matInput
+              name="lastname"
+              id="lastname"
+              placeholder="{{ 'settings.form.lastname.placeholder' | translate }}"
+              formControlName="lastName"
+              #lastName
+            />
+          </mat-form-field>
+
+          <div
+            *ngIf="settingsForm.get('lastName')!.invalid && (settingsForm.get('lastName')!.dirty || settingsForm.get('lastName')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('lastName')?.errors?.required"
+              jhiTranslate="settings.messages.validate.lastname.required"
+            >
+              Your last name is required.
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('lastName')?.errors?.minlength"
+              jhiTranslate="settings.messages.validate.lastname.minlength"
+            >
+              Your last name is required to be at least 1 character.
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('lastName')?.errors?.maxlength"
+              jhiTranslate="settings.messages.validate.lastname.maxlength"
+            >
+              Your last name cannot be longer than 50 characters.
+            </small>
+          </div>
+          <mat-form-field>
+            <mat-label jhiTranslate="global.form.email.label">Last Name</mat-label>
+            <input
+              matInput
+              name="email"
+              id="email"
+              placeholder="{{ 'global.form.email.placeholder' | translate }}"
+              formControlName="email"
+              #lemail
+            />
+          </mat-form-field>
+          <div *ngIf="settingsForm.get('email')!.invalid && (settingsForm.get('email')!.dirty || settingsForm.get('email')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('email')?.errors?.required"
+              jhiTranslate="global.messages.validate.email.required"
+            >
+              Your email is required.
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('email')?.errors?.email"
+              jhiTranslate="global.messages.validate.email.invalid"
+            >
+              Your email is invalid.
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('email')?.errors?.minlength"
+              jhiTranslate="global.messages.validate.email.minlength"
+            >
+              Your email is required to be at least 5 characters.
+            </small>
+
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('email')?.errors?.maxlength"
+              jhiTranslate="global.messages.validate.email.maxlength"
+            >
+              Your email cannot be longer than 100 characters.
+            </small>
+          </div>
+          <div *ngIf="languages && languages.length > 0">
+            <mat-form-field>
+              <mat-label jhiTranslate="settings.form.language">Language</mat-label>
+              <mat-select formControlName="langKey">
+                <mat-option *ngFor="let language of languages" [value]="language"
+                  >{{ language | findLanguageFromKey }}
+                  <!--                  {{ language.toString() }}-->
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <button
+            type="submit"
+            [disabled]="settingsForm.invalid"
+            class="btn btn-primary"
+            jhiTranslate="settings.form.button"
+            data-cy="submit"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+  </mat-card>
+</div>

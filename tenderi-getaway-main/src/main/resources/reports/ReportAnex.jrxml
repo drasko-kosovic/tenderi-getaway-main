@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PrvorangiraniUgovor" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a5c9b49-9dc5-422a-ac69-e92cf61ef530">
+    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapterMojTabla.xml"/>
+    <style name="Title" forecolor="#FFFFFF" fontSize="50" isBold="false"/>
+    <style name="SubTitle" forecolor="#CCCCCC" fontSize="18" isBold="false"/>
+    <style name="Column header" forecolor="#666666" fontSize="14" isBold="true"/>
+    <style name="Detail" mode="Transparent"/>
+    <style name="Row" mode="Transparent" pdfFontName="Times-Roman">
+        <conditionalStyle>
+            <conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+            <style mode="Opaque" backcolor="#F0EFEF"/>
+        </conditionalStyle>
+    </style>
+    <queryString language="SQL">
+        <![CDATA[select * from view_anex]]>
+    </queryString>
+    <field name="id" class="java.lang.Long">
+        <property name="com.jaspersoft.studio.field.label" value="id"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+        <property name="com.jaspersoft.studio.field.name" value="id"/>
+    </field>
+    <field name="sifra_postupka" class="java.lang.Integer">
+        <property name="com.jaspersoft.studio.field.label" value="sifra_postupka"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+    </field>
+    <field name="sifra_ponude" class="java.lang.Integer">
+        <property name="com.jaspersoft.studio.field.label" value="sifra_ponude"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+    </field>
+    <field name="broj_partije" class="java.lang.Integer">
+        <property name="com.jaspersoft.studio.field.label" value="broj_partije"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+    </field>
+    <field name="atc" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.label" value="atc"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+        <property name="com.jaspersoft.studio.field.name" value="atc"/>
+    </field>
+    <field name="inn" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.label" value="inn"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+        <property name="com.jaspersoft.studio.field.name" value="inn"/>
+    </field>
+    <field name="zasticeni_naziv" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.label" value="zasticeni_naziv"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+    </field>
+    <field name="farmaceutski_oblik_lijeka" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.label" value="farmaceutski_oblik_lijeka"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+    </field>
+    <field name="jacina_lijeka" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.label" value="jacina_lijeka"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+    </field>
+    <field name="pakovanje" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.label" value="pakovanje"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+        <property name="com.jaspersoft.studio.field.name" value="pakovanje"/>
+    </field>
+    <field name="jedinica_mjere" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.label" value="jedinica_mjere"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+    </field>
+    <field name="trazena_kolicina" class="java.lang.Integer">
+        <property name="com.jaspersoft.studio.field.label" value="trazena_kolicina"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+    </field>
+    <field name="procijenjena_vrijednost" class="java.lang.Double">
+        <property name="com.jaspersoft.studio.field.label" value="procijenjena_vrijednost"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+    </field>
+    <field name="ponudjena_vrijednost" class="java.lang.Double">
+        <property name="com.jaspersoft.studio.field.label" value="ponudjena_vrijednost"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+    </field>
+    <field name="rok_isporuke" class="java.lang.Integer">
+        <property name="com.jaspersoft.studio.field.label" value="rok_isporuke"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+    </field>
+    <field name="naziv_ponudjaca" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.label" value="naziv_ponudjaca"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+    </field>
+    <field name="naziv_proizvodjaca" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.label" value="naziv_proizvodjaca"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+    </field>
+    <field name="broj_ugovora" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.label" value="broj_ugovora"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+    </field>
+    <field name="datum_ugovora" class="java.sql.Date">
+        <property name="com.jaspersoft.studio.field.label" value="datum_ugovora"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="view_anex"/>
+    </field>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="50" splitType="Stretch">
+            <property name="com.jaspersoft.studio.unit.height" value="px"/>
+            <staticText>
+                <reportElement x="186" y="30" width="61" height="18" uuid="fd31875f-1836-4ed2-b2f1-b6677cae8407"/>
+                <textElement>
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Ponuda br.]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="375" y="30" width="55" height="18" uuid="31e25188-9fbf-4307-bda2-1d89d36a6469"/>
+                <textElement>
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Ponudjac:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="80" y="30" width="96" height="18" uuid="82e03094-3149-40ed-8fdb-b64210c4d7f4"/>
+                <textFieldExpression><![CDATA[$F{sifra_postupka}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="440" y="30" width="100" height="18" uuid="b8a18fbb-b896-4fbb-9ceb-93e79009e253"/>
+                <textFieldExpression><![CDATA[$F{naziv_ponudjaca}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="80" y="10" width="96" height="20" uuid="dcba3e3d-629f-43c6-9052-8988dbf0893d"/>
+                <textFieldExpression><![CDATA[$F{broj_ugovora}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="256" y="30" width="100" height="18" uuid="fd7edce8-1e2b-4e21-8f63-d6eae1b62eec"/>
+                <textFieldExpression><![CDATA[$F{sifra_ponude}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="0" y="30" width="76" height="18" uuid="dab02653-d135-47e6-a956-ce59439d9d5d"/>
+                <textElement>
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Postupak br.]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="10" width="76" height="20" uuid="90ec2461-8671-43c2-9201-d286583c5413"/>
+                <textElement>
+                    <font size="11" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Ugovor br.]]></text>
+            </staticText>
+        </band>
+    </title>
+    <pageHeader>
+        <band splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="18" splitType="Stretch">
+            <property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
+            <staticText>
+                <reportElement x="0" y="0" width="67" height="18" backcolor="#F5F5F5" uuid="7be8150f-aef6-4cfa-a86e-718fd12e81dd">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cc58274c-4079-4985-a8bf-f4d8ccb87e7c"/>
+                </reportElement>
+                <box>
+                    <topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <text><![CDATA[broj partije]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="67" y="0" width="67" height="18" backcolor="#F5F5F5" uuid="b8559465-0ee6-4a08-875a-fd66f3d04ad9">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d4090113-440c-4359-bdc9-ec541b176274"/>
+                </reportElement>
+                <box>
+                    <topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <text><![CDATA[atc]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="134" y="0" width="67" height="18" backcolor="#F5F5F5" uuid="466d6176-43d8-4de1-b983-e2995e394c70">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c0b47d21-ab16-47fb-8981-c70d9cbb3c69"/>
+                </reportElement>
+                <box>
+                    <topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <text><![CDATA[inn]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="201" y="0" width="67" height="18" backcolor="#F5F5F5" uuid="f20e46ce-3c9c-4823-acdb-231731afddc9">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fd1befff-b225-4d5b-bc5f-30899186951c"/>
+                </reportElement>
+                <box>
+                    <topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <text><![CDATA[zasticeni naziv]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="268" y="0" width="67" height="18" backcolor="#F5F5F5" uuid="9ac7e5db-526f-45d7-877c-2f7b018c49a6">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4bf5166-d652-4ef4-a54e-8fab809e4d4d"/>
+                </reportElement>
+                <box>
+                    <topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <text><![CDATA[farmaceutski oblik lijeka]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="335" y="0" width="67" height="18" backcolor="#F5F5F5" uuid="b961ab2e-062b-4b30-9c2d-528494009882">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="001e4940-2f5d-426f-a00e-543578f7f6e7"/>
+                </reportElement>
+                <box>
+                    <topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <text><![CDATA[jacina lijeka]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="402" y="0" width="67" height="18" backcolor="#F5F5F5" uuid="d6463dc6-b697-4a55-99d7-51b5b6c885f9">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8ca8c2c3-387f-4db9-aa2f-432ab2ea8842"/>
+                </reportElement>
+                <box>
+                    <topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <text><![CDATA[pakovanje]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="469" y="0" width="67" height="18" backcolor="#F5F5F5" uuid="d870c1a5-f332-40c0-9455-5c21fe87e8e6">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c727a4ab-c13c-4c6a-8460-6ee4f9aa4a1e"/>
+                </reportElement>
+                <box>
+                    <topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <text><![CDATA[jedinica mjere]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="536" y="0" width="67" height="18" backcolor="#F5F5F5" uuid="31650bd4-bb9b-4ac8-b457-f6bdcd623767">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ce3313f4-a45d-4d4c-aeda-cb1b00d8db6b"/>
+                </reportElement>
+                <box>
+                    <topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <text><![CDATA[trazena kolicina]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="603" y="0" width="67" height="18" backcolor="#F5F5F5" uuid="d37159f5-0b59-4779-b8ef-cff6a4d62211">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="43b2a8c0-2ef1-4cc8-ae26-3df1a0a600ba"/>
+                </reportElement>
+                <box>
+                    <topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <text><![CDATA[procijenjena vrijednost]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="670" y="0" width="66" height="18" backcolor="#F5F5F5" uuid="49ceef96-91a7-4eba-bab5-37bd4847eb72">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bcceb90d-8382-4930-9a4b-f98485052769"/>
+                </reportElement>
+                <box>
+                    <topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <text><![CDATA[ponudjena vrijednost]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="736" y="0" width="66" height="18" backcolor="#F5F5F5" uuid="ff87d71b-cc8f-464c-9471-4f0db3b391c8">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1e784d59-087c-457a-8014-1040c4a97c46"/>
+                </reportElement>
+                <box>
+                    <topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                    <bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+                    <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+                </box>
+                <text><![CDATA[rok isporuke]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="30" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="0" width="67" height="30" uuid="11853758-815e-4cf5-b509-8d970c5aecc4">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cc58274c-4079-4985-a8bf-f4d8ccb87e7c"/>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{broj_partije}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="67" y="0" width="66" height="30" uuid="9ed001e8-be26-4f53-8f5a-6a57c9ab6cc2">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d4090113-440c-4359-bdc9-ec541b176274"/>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{atc}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="142" y="0" width="66" height="30" uuid="94d42e4e-edf5-47b8-bc0e-a756c89123df">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c0b47d21-ab16-47fb-8981-c70d9cbb3c69"/>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{inn}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="208" y="0" width="66" height="30" uuid="97fbd918-953b-4f12-805b-f696d47c3cb1">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fd1befff-b225-4d5b-bc5f-30899186951c"/>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{zasticeni_naziv}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="274" y="0" width="66" height="30" uuid="aba6d0df-3a20-4608-bc4e-05a5763d82b4">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4bf5166-d652-4ef4-a54e-8fab809e4d4d"/>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{farmaceutski_oblik_lijeka}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="340" y="0" width="66" height="30" uuid="1a85d4ec-33bf-4b71-9347-e5769ba32809">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="001e4940-2f5d-426f-a00e-543578f7f6e7"/>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{jacina_lijeka}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="406" y="0" width="66" height="30" uuid="a3dc740b-3337-4562-be24-8166fc54bd4a">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8ca8c2c3-387f-4db9-aa2f-432ab2ea8842"/>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{pakovanje}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="472" y="0" width="66" height="30" uuid="fc31f667-2077-4418-a857-fe27bb613d40">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c727a4ab-c13c-4c6a-8460-6ee4f9aa4a1e"/>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{jedinica_mjere}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="538" y="0" width="66" height="30" uuid="1ed42bd5-ff74-4224-824e-b58ea02cab35">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ce3313f4-a45d-4d4c-aeda-cb1b00d8db6b"/>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{trazena_kolicina}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="604" y="0" width="66" height="30" uuid="90225844-1bed-4212-8092-b4101dd03c14">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="43b2a8c0-2ef1-4cc8-ae26-3df1a0a600ba"/>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{procijenjena_vrijednost}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="670" y="0" width="66" height="30" uuid="92d23490-834b-4ccf-bc6a-c68d6f899431">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bcceb90d-8382-4930-9a4b-f98485052769"/>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{ponudjena_vrijednost}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="736" y="0" width="66" height="30" uuid="f4ef86e5-d3cf-4a16-b9bd-6711a18eb3d4">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1e784d59-087c-457a-8014-1040c4a97c46"/>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{rok_isporuke}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="12" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="25" splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band splitType="Stretch"/>
+    </summary>
+</jasperReport>

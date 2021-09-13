@@ -1,0 +1,10 @@
+{
+  "generator-jhipster": {
+    "appsFolders": ["otvoreni-micro", "tenderi-getaway"],
+    "directoryPath": "C:\\Users\\drasko\\IdeaProjects\\TENDER-MICROSERVIS/",
+    "gatewayType": "SpringCloudGateway",
+    "monitoring": "no",
+    "serviceDiscoveryType": "eureka",
+    "jwtSecretKey": "ZDc2NzU2Yjc3M2M1ZjMwZjAzMTQ4NTI2MzcyN2YwNzM0YjEwZmYxYTc0ZDA3OGM0OGYzMGFhZjFiYTM5YTRlZmZkMjE0ZjI5OWUyNzBlOThmY2JmZDNkYWQ0MWViNzU3YjJjMg=="
+  }
+}

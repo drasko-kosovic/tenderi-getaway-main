@@ -1,0 +1,26 @@
+{
+  "tenderiApp": {
+    "otvoreniViewPonude": {
+      "home": {
+        "title": "View Ponudes",
+        "refreshListLabel": "Refresh list",
+        "notFound": "No View Ponudes found"
+      },
+      "detail": {
+        "title": "View Ponude"
+      },
+      "id": "ID",
+      "sifraPostupka": "Sifra Postupka",
+      "sifraPonude": "Sifra Ponude",
+      "brojPartije": "Broj Partije",
+      "sifraPonudjaca": "Sifra Ponudjaca",
+      "nazivPonudjaca": "Naziv Ponudjaca",
+      "nazivProizvodjaca": "Naziv Proizvodjaca",
+      "zasticeniNaziv": "Zasticeni Naziv",
+      "ponudjenaVrijednost": "Ponudjena Vrijednost",
+      "rokIsporuke": "Rok Isporuke",
+      "selected": "Selected",
+      "datumPonude": "Datum Ponude"
+    }
+  }
+}

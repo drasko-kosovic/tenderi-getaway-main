@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="anex">
+      <h2 data-cy="anexDetailsHeading"><span jhiTranslate="tenderiApp.otvoreniAnex.detail.title">Anex</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ anex.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniAnex.sifra_postupka">Sifra Postupka</span></dt>
+        <dd>
+          <span>{{ anex.sifra_postupka }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniAnex.sifra_ponude">Sifra Ponude</span></dt>
+        <dd>
+          <span>{{ anex.sifra_ponude }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniAnex.atc">Atc</span></dt>
+        <dd>
+          <span>{{ anex.atc }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniAnex.inn">Inn</span></dt>
+        <dd>
+          <span>{{ anex.inn }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniAnex.zasticeni_naziv">Zasticeni Naziv</span></dt>
+        <dd>
+          <span>{{ anex.zasticeni_naziv }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniAnex.farmaceutski_oblik_lijeka">Farmaceutski Oblik Lijeka</span></dt>
+        <dd>
+          <span>{{ anex.farmaceutski_oblik_lijeka }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniAnex.jacina_lijeka">Jacina Lijeka</span></dt>
+        <dd>
+          <span>{{ anex.jacina_lijeka }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniAnex.pakovanje">Pakovanje</span></dt>
+        <dd>
+          <span>{{ anex.pakovanje }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniAnex.trazena_kolicina">Trazena Kolicina</span></dt>
+        <dd>
+          <span>{{ anex.trazena_kolicina }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniAnex.procijenjena_vrijednost">Procijenjena Vrijednost</span></dt>
+        <dd>
+          <span>{{ anex.procijenjena_vrijednost }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniAnex.rok_isporuke">Rok Isporuke</span></dt>
+        <dd>
+          <span>{{ anex.rok_isporuke }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniAnex.naziv_ponudjaca">Naziv Ponudjaca</span></dt>
+        <dd>
+          <span>{{ anex.naziv_ponudjaca }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniAnex.naziv_proizvodjaca">Naziv Proizvodjaca</span></dt>
+        <dd>
+          <span>{{ anex.naziv_proizvodjaca }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/anex', anex.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

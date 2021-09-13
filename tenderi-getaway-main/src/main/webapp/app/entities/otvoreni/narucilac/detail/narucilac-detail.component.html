@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="narucilac">
+      <h2 data-cy="narucilacDetailsHeading"><span jhiTranslate="tenderiApp.otvoreniNarucilac.detail.title">Narucilac</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ narucilac.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniNarucilac.naziv">Naziv</span></dt>
+        <dd>
+          <span>{{ narucilac.naziv }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniNarucilac.racun">Racun</span></dt>
+        <dd>
+          <span>{{ narucilac.racun }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniNarucilac.telefon">Telefon</span></dt>
+        <dd>
+          <span>{{ narucilac.telefon }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniNarucilac.pib">Pib</span></dt>
+        <dd>
+          <span>{{ narucilac.pib }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniNarucilac.pdv">Pdv</span></dt>
+        <dd>
+          <span>{{ narucilac.pdv }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniNarucilac.odgovornoLiceNarucioca">Odgovorno Lice Narucioca</span></dt>
+        <dd>
+          <span>{{ narucilac.odgovornoLiceNarucioca }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniNarucilac.email">Email</span></dt>
+        <dd>
+          <span>{{ narucilac.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniNarucilac.adresa">Adresa</span></dt>
+        <dd>
+          <span>{{ narucilac.adresa }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/narucilac', narucilac.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

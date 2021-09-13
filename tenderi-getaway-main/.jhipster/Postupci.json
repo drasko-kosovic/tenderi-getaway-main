@@ -1,0 +1,39 @@
+{
+  "microservicePath": "C:\\Users\\drasko\\IdeaProjects\\otvoreni-micro",
+  "microserviceName": "otvoreni",
+  "clientRootFolder": "otvoreni",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "sifraPostupka",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "brojTendera",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "opisPostupka",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vrstaPostupka",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "datumObjave",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "datumOtvaranja",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [],
+  "service": "no",
+  "readOnly": false,
+  "pagination": "pagination",
+  "name": "Postupci",
+  "changelogDate": "20210906150246"
+}

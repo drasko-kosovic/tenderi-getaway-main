@@ -1,0 +1,30 @@
+{
+  "microservicePath": "C:\\Users\\drasko\\IdeaProjects\\otvoreni-micro",
+  "microserviceName": "otvoreni",
+  "clientRootFolder": "otvoreni",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "nazivPonudjaca",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "odgovornoLice",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "adresaPonudjaca",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bankaRacun",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "service": "no",
+  "readOnly": false,
+  "pagination": "pagination",
+  "name": "Ponudjaci",
+  "changelogDate": "20210906182835"
+}

@@ -1,0 +1,195 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-anex-heading" data-cy="AnexCreateUpdateHeading" jhiTranslate="tenderiApp.otvoreniAnex.home.createOrEditLabel">
+        Create or edit a Anex
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniAnex.sifra_postupka" for="field_sifra_postupka"
+            >Sifra Postupka</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="sifra_postupka"
+            id="field_sifra_postupka"
+            data-cy="sifra_postupka"
+            formControlName="sifra_postupka"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniAnex.sifra_ponude" for="field_sifra_ponude"
+            >Sifra Ponude</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="sifra_ponude"
+            id="field_sifra_ponude"
+            data-cy="sifra_ponude"
+            formControlName="sifra_ponude"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniAnex.atc" for="field_atc">Atc</label>
+          <input type="text" class="form-control" name="atc" id="field_atc" data-cy="atc" formControlName="atc" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniAnex.inn" for="field_inn">Inn</label>
+          <input type="text" class="form-control" name="inn" id="field_inn" data-cy="inn" formControlName="inn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniAnex.zasticeni_naziv" for="field_zasticeni_naziv"
+            >Zasticeni Naziv</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="zasticeni_naziv"
+            id="field_zasticeni_naziv"
+            data-cy="zasticeni_naziv"
+            formControlName="zasticeni_naziv"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tenderiApp.otvoreniAnex.farmaceutski_oblik_lijeka"
+            for="field_farmaceutski_oblik_lijeka"
+            >Farmaceutski Oblik Lijeka</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="farmaceutski_oblik_lijeka"
+            id="field_farmaceutski_oblik_lijeka"
+            data-cy="farmaceutski_oblik_lijeka"
+            formControlName="farmaceutski_oblik_lijeka"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniAnex.jacina_lijeka" for="field_jacina_lijeka"
+            >Jacina Lijeka</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="jacina_lijeka"
+            id="field_jacina_lijeka"
+            data-cy="jacina_lijeka"
+            formControlName="jacina_lijeka"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniAnex.pakovanje" for="field_pakovanje">Pakovanje</label>
+          <input type="text" class="form-control" name="pakovanje" id="field_pakovanje" data-cy="pakovanje" formControlName="pakovanje" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniAnex.trazena_kolicina" for="field_trazena_kolicina"
+            >Trazena Kolicina</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="trazena_kolicina"
+            id="field_trazena_kolicina"
+            data-cy="trazena_kolicina"
+            formControlName="trazena_kolicina"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tenderiApp.otvoreniAnex.procijenjena_vrijednost"
+            for="field_procijenjena_vrijednost"
+            >Procijenjena Vrijednost</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="procijenjena_vrijednost"
+            id="field_procijenjena_vrijednost"
+            data-cy="procijenjena_vrijednost"
+            formControlName="procijenjena_vrijednost"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniAnex.rok_isporuke" for="field_rok_isporuke"
+            >Rok Isporuke</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="rok_isporuke"
+            id="field_rok_isporuke"
+            data-cy="rok_isporuke"
+            formControlName="rok_isporuke"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniAnex.naziv_ponudjaca" for="field_naziv_ponudjaca"
+            >Naziv Ponudjaca</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="naziv_ponudjaca"
+            id="field_naziv_ponudjaca"
+            data-cy="naziv_ponudjaca"
+            formControlName="naziv_ponudjaca"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tenderiApp.otvoreniAnex.naziv_proizvodjaca" for="field_naziv_proizvodjaca"
+            >Naziv Proizvodjaca</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="naziv_proizvodjaca"
+            id="field_naziv_proizvodjaca"
+            data-cy="naziv_proizvodjaca"
+            formControlName="naziv_proizvodjaca"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+{
+  "tenderiApp": {
+    "otvoreniViewVrednovanje": {
+      "home": {
+        "title": "View Vrednovanjes",
+        "refreshListLabel": "Refresh list",
+        "notFound": "No View Vrednovanjes found"
+      },
+      "detail": {
+        "title": "View Vrednovanje"
+      },
+      "id": "ID",
+      "sifraPostupka": "Sifra Postupka",
+      "sifraPonude": "Sifra Ponude",
+      "brojPartije": "Broj Partije",
+      "atc": "Atc",
+      "inn": "Inn",
+      "zasticeniNaziv": "Zasticeni Naziv",
+      "farmaceutskiOblikLijeka": "Farmaceutski Oblik Lijeka",
+      "jacinaLijeka": "Jacina Lijeka",
+      "pakovanje": "Pakovanje",
+      "trazenaKolicina": "Trazena Kolicina",
+      "procijenjenaVrijednost": "Procijenjena Vrijednost",
+      "ponudjenaVrijednost": "Ponudjena Vrijednost",
+      "rokIsporuke": "Rok Isporuke",
+      "nazivProizvodjaca": "Naziv Proizvodjaca",
+      "nazivPonudjaca": "Naziv Ponudjaca",
+      "bodCijena": "Bod Cijena",
+      "bodRok": "Bod Rok",
+      "bodUkupno": "Bod Ukupno"
+    }
+  }
+}

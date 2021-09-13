@@ -1,0 +1,9 @@
+{
+  "generator-jhipster:7.0.0": {
+    "promptValues": {
+      "packageName": "tenderi",
+      "nativeLanguage": "sr",
+      "microservicePath": "C:\\Users\\drasko\\IdeaProjects\\otvoreni-micro"
+    }
+  }
+}

@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="viewPrvorangirani">
+      <h2 data-cy="viewPrvorangiraniDetailsHeading">
+        <span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.detail.title">View Prvorangirani</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.sifraPostupka">Sifra Postupka</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.sifraPostupka }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.sifraPonude">Sifra Ponude</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.sifraPonude }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.brojPartije">Broj Partije</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.brojPartije }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.atc">Atc</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.atc }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.inn">Inn</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.inn }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.zasticeniNaziv">Zasticeni Naziv</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.zasticeniNaziv }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.farmaceutskiOblikLijeka">Farmaceutski Oblik Lijeka</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.farmaceutskiOblikLijeka }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.jacinaLijeka">Jacina Lijeka</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.jacinaLijeka }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.pakovanje">Pakovanje</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.pakovanje }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.trazenaKolicina">Trazena Kolicina</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.trazenaKolicina }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.procijenjenaVrijednost">Procijenjena Vrijednost</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.procijenjenaVrijednost }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.ponudjenaVrijednost">Ponudjena Vrijednost</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.ponudjenaVrijednost }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.rokIsporuke">Rok Isporuke</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.rokIsporuke }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.nazivProizvodjaca">Naziv Proizvodjaca</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.nazivProizvodjaca }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.nazivPonudjaca">Naziv Ponudjaca</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.nazivPonudjaca }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.bodCijena">Bod Cijena</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.bodCijena }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.bodRok">Bod Rok</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.bodRok }}</span>
+        </dd>
+        <dt><span jhiTranslate="tenderiApp.otvoreniViewPrvorangirani.bodUkupno">Bod Ukupno</span></dt>
+        <dd>
+          <span>{{ viewPrvorangirani.bodUkupno }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+    </div>
+  </div>
+</div>
